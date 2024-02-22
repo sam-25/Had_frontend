@@ -2,17 +2,59 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
-const LoginForm = ({ onBack, onToggle }) => {
-  const [email, setEmail] = useState('');
+const LoginForm = ({ onBack, onToggle ,userType}) => {
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   // Handle the form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log({ email, password });
+    console.log({ name, password });
     // Here you would typically handle the login logic,
     // such as sending the email and password to your server for authentication
+
+    let user = {
+      "username": name,
+      "password":password, 
+     }
+ 
+   
+   let options = {
+     method: 'POST',
+     headers: {
+         'Content-Type':
+             'application/json;charset=utf-8'
+     },
+     body: JSON.stringify(user)
+   }
+ 
+ 
+   async function request(options){
+ 
+       try{
+
+        let res = await axios.post("http://localhost:8080/auth/generateToken",
+          {   
+           username: name,
+           password: password, 
+
+          }
+        )
+
+        var token = res.data; 
+        localStorage.setItem("token",token); 
+ 
+       }
+       catch(e){
+          console.log(e); 
+       }
+ 
+   }
+ 
+   request(options);
+
   };
 
   return (
@@ -29,10 +71,10 @@ const LoginForm = ({ onBack, onToggle }) => {
       <form onSubmit={handleSubmit}>
         {/* Email Input */}
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="name"
+          placeholder="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         {/* Password Input */}
         <input

@@ -3,20 +3,48 @@ import React, { useState } from 'react';
 import UserTypeSelection from './UserTypeSelection';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import axios from 'axios';
 
 const Login = () => {
   const [userType, setUserType] = useState('');
   const [isLogin, setIsLogin] = useState(true);
+  const [isToken,setToken] =useState()
 
   if (!userType) {
     return <UserTypeSelection onSelectUserType={(type) => setUserType(type)} />;
+    let val = localStorage.getItem('token'); 
+    if(val != null){
+
+
+      if(userType == 'Radiographer'){
+          try{
+                 
+
+          }
+          catch{
+             
+          }
+      }
+      else if(userType == 'Doctor'){
+         try{
+           let val = axios.get("")
+             
+        }
+        catch{
+           
+        }
+      }
+       
+     
+    }
   }
 
   return (
+
     isLogin ? (
-      <LoginForm onBack={() => setUserType('')} onToggle={() => setIsLogin(false)} />
+      <LoginForm onBack={() => setUserType('')} onToggle={() => setIsLogin(false)} userType={userType} />
     ) : (
-      <SignupForm onBack={() => setUserType('')} onToggle={() => setIsLogin(true)} />
+      <SignupForm onBack={() => setUserType('')} onToggle={() => setIsLogin(true)} userType={userType}/>
     )
   );
 };

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-const SignupForm = ({ onBack, onToggle }) => {
+const SignupForm = ({ onBack, onToggle ,userType}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +14,42 @@ const SignupForm = ({ onBack, onToggle }) => {
     console.log({ name, email, password });
     // Here you would typically handle the signup logic,
     // such as sending the name, email, and password to your server for account creation
+
+      
+    let user = {
+     "name": name,
+     "email":email,
+     "password":password, 
+     "roles" : userType
+    }
+
+  
+  let options = {
+    method: 'POST',
+    headers: {
+        'Content-Type':
+            'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(user)
+  }
+
+
+  async function request(options){
+
+      try{
+        let fetchRes = await fetch(
+          "http://localhost:8080/auth/addNewUser",
+          options); 
+
+      }
+      catch(e){
+         console.log(e); 
+      }
+
+  }
+
+  request(options); 
+
   };
 
   return (
