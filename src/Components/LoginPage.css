@@ -1,0 +1,139 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .image-section {
+    width: 55%; /* Set this to the desired width of your image section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Added padding for spacing */
+  }
+  
+  .image-section img {
+    width: 100%; /* This will make the image responsive to the container size */
+    height: auto; /* This will maintain the aspect ratio */
+  }
+  
+  .login-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    width: 350px; /* Adjust as needed */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 50px; /* Changed from padding-right for consistency */
+    background: #fff; /* Assuming a white background for the container */
+    border-radius: 8px; /* Optional: Adds rounded corners to the container */
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .login-container input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Styles for the login options similar to the uploaded image */
+  .login-options-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .login-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .login-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .login-option span {
+    margin-left: 10px;
+    font-size: 16px; /* Adjust font size as needed */
+  }
+  
+  /* You might need to adjust the icon size depending on the icon library you use */
+  .login-option i,
+  .login-option svg {
+    font-size: 20px; /* Adjust icon size as needed */
+    width: 30px; /* Ensures icons have space */
+  }
+  
+
+  .user-type-selection {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Match the login container width */
+    margin: auto;
+  }
+  
+  .user-type-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .user-type-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .user-type-option .user-type-label {
+    margin-left: 10px;
+  }
+
+  button.Back-button {
+    background-color: #d6dbd6; /* Replace with your desired background color */
+    color: rgb(6, 6, 6); /* This is the text color */
+    padding: 10px 20px; /* Adjust padding as needed for height and width */
+    border: none; /* Removes the default border */
+    border-radius: 5px; /* Rounds the corners of the button */
+    width: 100px; /* Set a specific width or use 'auto' to size based on content */
+    cursor: pointer; /* Changes the mouse cursor to a pointer on hover */
+    outline: none; /* Removes the outline to prevent a blue border on click */
+    transition: background-color 0.3s; /* Smooth background color transition for hover */
+  }
+  
+  .Back-button:hover {
+    background-color: #93a394; /* Slightly darker shade on hover */
+  }
+  
+  
