@@ -1,0 +1,102 @@
+.medical-lab-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title-bar {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .title-bar button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 20px;
+  }
+  
+  .patient-list {
+    width: 30%;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .patient-list h2 {
+    margin-bottom: 10px;
+  }
+  
+  .patient-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .patient-list li {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: #f0f0f0;
+  }
+  
+  .patient-list li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .patient-details {
+    width: 65%;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .patient-details h2 {
+    margin-bottom: 20px;
+  }
+  
+  .files h3,
+  .notes h3 {
+    margin-bottom: 10px;
+  }
+  
+  .files ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .files li {
+    margin-bottom: 5px;
+  }
+  
+  .notes textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
