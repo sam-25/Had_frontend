@@ -2,11 +2,14 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import MedicalLabPage from './MedicalLabPage';
 const LoginForm = ({ onBack, onToggle ,userType}) => {
+  let howle = 0;
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   // Handle the form submission
   const handleSubmit = (event) => {
@@ -45,9 +48,16 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
 
         var token = res.data; 
         localStorage.setItem("token",token); 
- 
+          
+        if(userType=="Radiographer")
+        navigate("/Radiographer");
+      else{
+        navigate("/Doctor");
+      }
+           
        }
        catch(e){
+          
           console.log(e); 
        }
  
@@ -56,8 +66,8 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
    request(options);
 
   };
-
-  return (
+  // if(!howle)
+  return ( 
     <div className="login-container">
       {/* Back Button */}
       <button className="Back-button" onClick={onBack}>
