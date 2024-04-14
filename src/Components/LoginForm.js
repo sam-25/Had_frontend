@@ -98,9 +98,12 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
       </form>
 
       {/* Toggle to Signup Form */}
-      <p>
-        Don't have an account? <span onClick={onToggle} style={{color: '#007bff', cursor: 'pointer'}}>Sign up</span>
-      </p>
+      
+      {userType === 'Patient' && (
+        <p>
+          Don't have an account? <span onClick={onToggle} style={{color: '#007bff', cursor: 'pointer'}}>Sign up</span>
+        </p>
+      )}
     </div>
   );
 };
