@@ -1,8 +1,8 @@
 // Login.js
 import React, { useState } from 'react';
-import UserTypeSelection from './UserTypeSelection';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import UserTypeSelection from '../../Components/UserTypeSelection';
+import LoginForm from '../../Components/LoginForm';
+import SignupForm from '../../Components/SignupForm';
 import axios from 'axios';
 
 const Login = () => {

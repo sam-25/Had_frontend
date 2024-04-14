@@ -1,9 +1,9 @@
 import React from 'react';
-import LoginPage from './Components/LoginPage';
-import MedicalLabPage from './Components/MedicalLabPage';
+import LoginPage from './Pages/Login/LoginPage';
+import MedicalLabPage from './Pages/MedicalLab/MedicalLabPage';
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import DoctorDashboard from './Pages/DoctorDashboard';
-import EmptyPage from "./Components/EmptyPage";
+import EmptyPage from "./Pages/EmptyPage";
+import DoctorDiagnosticPage from './Pages/Doctor/DoctorDiagnosticPage';
 function App() {
   return (
     <div className="App">
@@ -13,7 +13,7 @@ function App() {
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
-              <Route path="/Doctor" element = {<DoctorDashboard />} />
+              <Route path="/Doctor" element = {<DoctorDiagnosticPage />} />
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} />

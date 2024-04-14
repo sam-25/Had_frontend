@@ -1,0 +1,86 @@
+/* DoctorDashboardPage.css */
+
+.doctor-dashboard-page {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+  }
+  
+  table {
+    width: 75%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Adjust column widths */
+  th:nth-child(1), td:nth-child(1), th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3) {
+    width: 150px; /* Adjust the width as needed */
+  }
+  
+  /* Style the checkbox */
+  input[type="checkbox"] {
+    transform: scale(1.5); /* Make the checkbox bigger */
+    margin-right: 5px;
+  }
+  
+  
+/* DoctorDashboardPage.css */
+
+/* Other styles */
+
+/* Style the checkbox */
+input[type="checkbox"] {
+  transform: scale(1.5); /* Make the checkbox bigger */
+  margin-right: 5px;
+}
+
+/* Style for disabled checkbox */
+input[type="checkbox"]:disabled {
+  /* Use custom colors for checked and unchecked state */
+  background-color: #f2f2f2; /* Background color for unchecked */
+  border-color: #f2f2f2; /* Border color for unchecked */
+  color: green; /* Color for checked (blue) */
+}
+
+/* Style for checked state of disabled checkbox */
+input[type="checkbox"]:disabled:checked {
+  background-color: #007bff; /* Background color for checked (blue) */
+  border-color: #007bff; /* Border color for checked (blue) */
+  color: rgb(50, 169, 50); /* Text color for checked (white) */
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import './LoginPage.css';
-import homePageImage from './Assets/home-page.jpg'; // Make sure this path is correct
+import homePageImage from '../../Components/Assets/home-page.jpg'; // Make sure this path is correct
 
 const LoginPage = () => {
   return (

@@ -1,0 +1,67 @@
+/* DoctorDiagnosticPage.css */
+.doctor-diagnostic-page-container {
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow-y: auto; /* Enable vertical scroll if content exceeds viewport height */
+}
+
+.doctor-diagnostic-page {
+  padding: 20px; /* Add padding as needed */
+}
+
+.table-container {
+  max-height: 400px; /* Set a max height for the table container */
+  overflow-y: auto; /* Enable vertical scroll if table exceeds max height */
+}
+
+
+.doctor-diagnostic-page {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+  }
+  
+  table {
+    width: 75%;
+    border-collapse: collapse;
+    margin: 40px;
+    /* margin-left: 10px; */
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Adjust column widths */
+  th:nth-child(2), td:nth-child(2), th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) {
+    width: 100px; /* Adjust the width as needed */
+  }
+  
+  /* Align diagnostic name to the right of back button */
+  h1 {
+    display: inline-block;
+    margin-left: 20px; /* Adjust the margin as needed */
+  }
+  

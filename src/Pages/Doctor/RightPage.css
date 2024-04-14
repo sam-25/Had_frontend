@@ -1,0 +1,21 @@
+/* RightPage.css */
+.right-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .react-resizable {
+    position: relative;
+  }
+  
+  .react-resizable-handle {
+    position: absolute;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 8px;
+    cursor: row-resize;
+    bottom: 0;
+    left: 0;
+  }
+  
