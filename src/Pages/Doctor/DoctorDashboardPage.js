@@ -13,11 +13,24 @@ const DoctorDashboardPage = () => {
     // Add more diagnosis data as needed
   ]);
 
+  const [secondOpinionRequests, setSecondOpinionRequests] = useState([
+    { id: 1, diagnosisName: 'Pneumonia', doctorName: 'Dr. Smith', remarks: 'Need additional evaluation' },
+    { id: 2, diagnosisName: 'COVID-19', doctorName: 'Dr. Johnson', remarks: 'Suspected case, need confirmation' },
+    // Add more second opinion requests as needed
+  ]);
+
+  const handleViewPastDiagnoses = () => {
+    // Handle the action when the button is clicked
+    console.log('View Past Diagnoses button clicked');
+  };
+
   return (
     <div className="doctor-dashboard-page">
-      
       <BackButton onClick={() => console.log('Back button clicked')} />
       <h1>Doctor Dashboard</h1>
+
+      {/* First table for patient diagnoses */}
+      <h2>Patient Diagnoses</h2>
       <table>
         <thead>
           <tr>
@@ -52,6 +65,30 @@ const DoctorDashboardPage = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Second table for second opinion requests */}
+      <h2>Second Opinion Requests</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Diagnosis Name</th>
+            <th>Doctor Name</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {secondOpinionRequests.map((request) => (
+            <tr key={request.id}>
+              <td>{request.diagnosisName}</td>
+              <td>{request.doctorName}</td>
+              <td>{request.remarks}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* Button for viewing past diagnoses */}
+      <button onClick={handleViewPastDiagnoses}>View Past Diagnoses</button>
     </div>
   );
 };
