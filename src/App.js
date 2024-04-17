@@ -13,7 +13,7 @@ function App() {
       {/* <LoginPage />
        */}
        
-       <BrowserRouter>
+       {/* <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
@@ -22,10 +22,10 @@ function App() {
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> */}
-          </Routes>
-       </BrowserRouter>
+          {/* </Routes> */}
+        {/* </BrowserRouter>  */}
       {/* <p>de</p> */}
-      {/* <DoctorDashboardPage></DoctorDashboardPage> */}
+      <DoctorDashboardPage></DoctorDashboardPage>
 
     </div>
   );

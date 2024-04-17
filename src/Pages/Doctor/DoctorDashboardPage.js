@@ -1,4 +1,3 @@
-// DoctorDashboardPage.js
 import React, { useState } from 'react';
 import BackButton from '../../Components/BackButton'; // Assuming BackButton.js is in the correct directory
 import './DoctorDashboardPage.css'; // Import CSS for styling from the correct path
@@ -8,20 +7,34 @@ const DoctorDashboardPage = () => {
   const [diagnoses, setDiagnoses] = useState([
     { id: 1, patientName: 'John Doe', diagnosis: 'Fever', date: '2024-04-05', status: [{ test: 'X-ray', isChecked: false }, { test: 'Blood test', isChecked: true }], updates: 'Started medication' },
     { id: 2, patientName: 'Jane Smith', diagnosis: 'Cough', date: '2024-04-06', status: [{ test: 'X-ray', isChecked: true }, { test: 'Blood test', isChecked: false }], updates: 'Prescribed cough syrup' },
-    { id: 2, patientName: 'Jane Smith', diagnosis: 'Cough', date: '2024-04-06', status: [{ test: 'X-ray', isChecked: true }, { test: 'Blood test', isChecked: false }], updates: 'Prescribed cough syrup' },
-
     // Add more diagnosis data as needed
   ]);
 
   const [secondOpinionRequests, setSecondOpinionRequests] = useState([
-    { id: 1, diagnosisName: 'Pneumonia', doctorName: 'Dr. Smith', remarks: 'Need additional evaluation' },
-    { id: 2, diagnosisName: 'COVID-19', doctorName: 'Dr. Johnson', remarks: 'Suspected case, need confirmation' },
+    { id: 1, diagnosisName: 'Pneumonia', doctorName: 'Dr. Smith', remarks: 'Need additional evaluation', status: 'Pending' },
+    { id: 2, diagnosisName: 'COVID-19', doctorName: 'Dr. Johnson', remarks: 'Suspected case, need confirmation', status: 'Pending' },
     // Add more second opinion requests as needed
   ]);
 
   const handleViewPastDiagnoses = () => {
     // Handle the action when the button is clicked
     console.log('View Past Diagnoses button clicked');
+  };
+  
+  const handleAcceptRequest = (id) => {
+    setSecondOpinionRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === id ? { ...request, status: 'Accepted' } : request
+      )
+    );
+  };
+
+  const handleRejectRequest = (id) => {
+    setSecondOpinionRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === id ? { ...request, status: 'Rejected' } : request
+      )
+    );
   };
 
   return (
@@ -74,6 +87,8 @@ const DoctorDashboardPage = () => {
             <th>Diagnosis Name</th>
             <th>Doctor Name</th>
             <th>Remarks</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -82,6 +97,15 @@ const DoctorDashboardPage = () => {
               <td>{request.diagnosisName}</td>
               <td>{request.doctorName}</td>
               <td>{request.remarks}</td>
+              <td>{request.status}</td>
+              <td>
+                {request.status === 'Pending' && (
+                  <>
+                    <button onClick={() => handleAcceptRequest(request.id)}>Accept</button>
+                    <button onClick={() => handleRejectRequest(request.id)}>Reject</button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -89,6 +113,8 @@ const DoctorDashboardPage = () => {
 
       {/* Button for viewing past diagnoses */}
       <button onClick={handleViewPastDiagnoses}>View Past Diagnoses</button>
+
+      {/* <button onClick={handleViewPastDiagnoses}>View Past Diagnoses</button> */}
     </div>
   );
 };
