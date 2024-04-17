@@ -1,25 +1,32 @@
 import React from 'react';
-import LoginPage from './Pages/Login/LoginPage';
-import MedicalLabPage from './Pages/MedicalLab/MedicalLabPage';
+// import LoginPage from './Components/LoginPage';
+// import MedicalLabPage from './Components/MedicalLabPage';
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import EmptyPage from "./Pages/EmptyPage";
-import DoctorDiagnosticPage from './Pages/Doctor/DoctorDiagnosticPage';
+// import EmptyPage from "./Components/EmptyPage";
+import DoctorDashboardPage from "./Pages/Doctor/DoctorDashboardPage";
+
+
+
 function App() {
   return (
     <div className="App">
       {/* <LoginPage />
        */}
-       <BrowserRouter>
+       
+       {/* <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
-              <Route path="/Doctor" element = {<DoctorDiagnosticPage />} />
+              <Route path="/Doctor" element = {<EmptyPage></EmptyPage>} /> */}
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> */}
-          </Routes>
-       </BrowserRouter>
+          {/* </Routes>
+       </BrowserRouter> */}
+      {/* <p>de</p> */}
+      <DoctorDashboardPage></DoctorDashboardPage>
+
     </div>
   );
 }
