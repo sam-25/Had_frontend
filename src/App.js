@@ -11,20 +11,21 @@ import Notes from './Components/DoctorNew/Notes';
 function App() {
   return (
     <div className="App">
-       {/* <BrowserRouter>
+       <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Doctor" element = {<DoctorDashboardPage />} />
-              <Route path="/Radiographer" element = {<MedicalLabPage />} />
+              <Route path="/DoctorConsultation" element={<DoctorConsultation/>} />
+              {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
-              <Route path="/Radiographer" element = {<MedicalLabPage />} />
+              <Route path="/Radiographer" element = {<MedicalLabPage />} /> */}
           </Routes>
-        </BrowserRouter>  */}
+        </BrowserRouter> 
 
-      {/* <DoctorDiagnosticPage /> */}
-      <DoctorConsultation />
+      {/* <DoctorDiagnosticPage />
+      {/* <DoctorConsultation /> */}
     </div>
   );
 }

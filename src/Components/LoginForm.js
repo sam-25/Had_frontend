@@ -49,11 +49,11 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
         var token = res.data; 
         localStorage.setItem("token",token); 
           
-        if(userType=="Radiographer")
-        navigate("/Radiographer");
-      else{
-        navigate("/Doctor");
-      }
+        if(userType=="Radiographer") navigate("/Radiographer");
+        else if (userType == "Doctor") navigate("/Doctor");
+        else{
+          navigate("/Doctor");
+        }
            
        }
        catch(e){
