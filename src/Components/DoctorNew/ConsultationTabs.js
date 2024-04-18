@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, axios } from 'react'
 
 const TestCard = ({ testName, description }) => {
   return (
@@ -25,10 +25,17 @@ const TestCard = ({ testName, description }) => {
 
 const ConsultationTabs = () => {
   const [tests, setTests] = useState([
-    { testName: "X-ray", description: "Description for X-ray" },
-    { testName: "CT-Scan", description: "Description for CT-Scan" },
-    { testName: "Some Test", description: "Description for Some Test" }
+
   ]);
+  useEffect(() =>{
+    axios.get('http://localhost:8080/test')
+      .then(response => {
+        setTests(response.data.tests);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div role="tablist" className="tabs tabs-bordered tabs-lg">

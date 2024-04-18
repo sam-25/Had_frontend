@@ -18,7 +18,7 @@ const DoctorConsultation = () => {
         </div>
         
         <div className='bg-base-300 flex-1 h-1/3'>
-          <Notes />
+          <Notes />   
         </div>
       </div>
     </div>
