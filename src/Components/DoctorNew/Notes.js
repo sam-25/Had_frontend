@@ -13,6 +13,12 @@ const Notes = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+        handleAddNote();
+      }    
+  }
+
   // Scroll to bottom on initial load and when new notes are added
   useEffect(() => {
     if (notesRef.current) {
@@ -36,15 +42,16 @@ const Notes = () => {
           type="text"
           value={newNote}
           onChange={(e) => setNewNote(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e)}
           placeholder="Enter your note..."
           className="w-full px-2 py-1 border rounded focus:outline-none"
         />
-        <button
+        {/* <button
           onClick={handleAddNote}
           className="mt-2 w-full bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 focus:outline-none"
         >
           Add
-        </button>
+        </button> */}
       </div>
     </div>
   );
