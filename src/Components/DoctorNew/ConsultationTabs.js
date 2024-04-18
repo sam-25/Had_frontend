@@ -1,4 +1,5 @@
-import React, { useState, useEffect, axios } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 const TestCard = ({ testName, description }) => {
   return (
@@ -27,10 +28,12 @@ const ConsultationTabs = () => {
   const [tests, setTests] = useState([
 
   ]);
+
   useEffect(() =>{
-    axios.get('http://localhost:8080/test')
+    axios.get('http://localhost:8080/Testing')
       .then(response => {
-        setTests(response.data.tests);
+        console.log(response.data);
+        setTests(response.data);
       })
       .catch(error => {
         console.error(error);
