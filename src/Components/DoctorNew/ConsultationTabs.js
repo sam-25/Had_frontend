@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const TestCard = ({ testName, description }) => {
   return (
@@ -24,6 +24,12 @@ const TestCard = ({ testName, description }) => {
 };
 
 const ConsultationTabs = () => {
+  const [tests, setTests] = useState([
+    { testName: "X-ray", description: "Description for X-ray" },
+    { testName: "CT-Scan", description: "Description for CT-Scan" },
+    { testName: "Some Test", description: "Description for Some Test" }
+  ]);
+
   return (
     <div role="tablist" className="tabs tabs-bordered tabs-lg">
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Chats" checked/>
@@ -31,9 +37,12 @@ const ConsultationTabs = () => {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <TestCard testName="X-ray" description="Description for Test 1" />
+        {/* <TestCard testName="X-ray" description="Description for Test 1" />
         <TestCard testName="CT-Scan" description="Description for Test 2" />
-        <TestCard testName="Some Test" description="Description for Test 3" />
+        <TestCard testName="Some Test" description="Description for Test 3" /> */}
+        {tests.map((test, index) => (
+          <TestCard key={index} testName={test.testName} description={test.description} />
+        ))}
       </div>
     </div>
   )
