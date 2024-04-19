@@ -13,7 +13,9 @@ const UserTypeOption = ({ icon, label, onClick }) => (
 
 const UserTypeSelection = ({ onSelectUserType }) => (
   <div className="user-type-selection">
-    <h2>Login As <FontAwesomeIcon icon={faArrowRight} size="xs" /></h2>
+    {/* <h1>Login As <FontAwesomeIcon icon={faArrowRight} size="s" /></h1> */}
+    <h1 style={{ fontSize: '2em' , marginBottom: '20px', marginLeft: '0px'}}>Login As </h1>
+
     <UserTypeOption icon={faUserInjured} label="Patient" onClick={onSelectUserType} />
     <UserTypeOption icon={faUserMd} label="Doctor" onClick={onSelectUserType} />
     <UserTypeOption icon={faXRay} label="Radiographer" onClick={onSelectUserType} />

@@ -60,7 +60,7 @@ const SignupForm = ({ onBack, onToggle ,userType}) => {
       </button>
 
       {/* Form Title */}
-      <h2>Sign Up</h2>
+      <h2 style={{ fontSize: '1.5em' , marginBottom: '20px', marginLeft: '0px', marginTop: '10px' }}>Sign Up </h2>
 
       {/* Signup Form */}
       <form onSubmit={handleSubmit}>

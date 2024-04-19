@@ -75,7 +75,7 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
       </button>
 
       {/* Form Title */}
-      <h2>Login</h2>
+      <h2 style={{ fontSize: '1.5em' , marginBottom: '20px', marginLeft: '0px', marginTop: '10px'}}>Login </h2>
 
       {/* Login Form */}
       <form onSubmit={handleSubmit}>
