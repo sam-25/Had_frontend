@@ -1,5 +1,5 @@
 import React from 'react';
-import TopMenuBar from './TopMenuBar';
+import TopMenuBar from '../../Components/TopMenuBar';
 import DoctorDiagnosisTable from '../../Components/DoctorNew/DoctorDiagnosisTable';
 import SecondOpinionRequests from '../../Components/DoctorNew/SecondOpinionRequests';
 

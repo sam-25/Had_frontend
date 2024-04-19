@@ -3,7 +3,7 @@ import LoginPage from './Pages/Login/LoginPage';
 import MedicalLabPage from './Pages/MedicalLab/MedicalLabPage';
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import EmptyPage from "./Pages/EmptyPage";
-import DoctorDashboardPage from "./Pages/Doctor/DoctorDashboardPage";
+import DoctorDashboardPage from "./Pages/DoctorNew/DoctorDashboard";
 import DoctorDiagnosticPage from "./Pages/Doctor/DoctorDiagnosticPage";
 import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
 import Notes from './Components/DoctorNew/Notes';
