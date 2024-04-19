@@ -24,8 +24,8 @@ function App() {
           </Routes>
         </BrowserRouter> 
 
-      {/* <DoctorDiagnosticPage />
-      {/* <DoctorConsultation /> */}
+      {/* <DoctorDiagnosticPage /> */}
+       {/* <DoctorConsultation /> */}
     </div>
   );
 }
