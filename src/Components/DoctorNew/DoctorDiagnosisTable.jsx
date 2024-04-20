@@ -9,7 +9,12 @@ const DoctorDiagnosticPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations?doctorId=1`);
+        const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations`, {
+          params: {
+            doctorId: 1, // Replace with the actual doctorId value
+            // Add more params as needed
+          }
+        });
         const modifiedData = response.data.map(item => ({
           patientName: item.patient.user.name,
           diagnosis: item.description,
@@ -22,7 +27,7 @@ const DoctorDiagnosticPage = () => {
         console.error('Error fetching data:', error);
         setLoading(false);
       }
-    };
+    };    
 
     fetchData();
   }, []);
