@@ -7,6 +7,7 @@ import DoctorDashboardPage from "./Pages/DoctorNew/DoctorDashboard";
 import DoctorDiagnosticPage from "./Pages/Doctor/DoctorDiagnosticPage";
 import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
 import Notes from './Components/DoctorNew/Notes';
+import './App.css'
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
               <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Doctor" element = {<DoctorDashboardPage />} />
-              <Route path="/DoctorConsultation" element={<DoctorConsultation/>} />
+              {/* <Route path="/DoctorConsultation" element={<DoctorConsultation/>} /> */}
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
