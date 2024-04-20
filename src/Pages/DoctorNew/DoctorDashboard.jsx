@@ -7,6 +7,7 @@ import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
+  const [pastDiagnosis, setPastDiagnosis] = useState([]);
 
   const handleAddDiagnosis = () => {
     setShowNewDiagnosticForm(true);
@@ -22,7 +23,12 @@ const DoctorDashboard = () => {
     setShowNewDiagnosticForm(false);
   };
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (formData) => {
+    // Handle form submission
+    console.log('Form submitted:', formData);
+    // Add the new diagnosis to the past diagnosis list
+    setPastDiagnosis([...pastDiagnosis, formData]);
+    // Close the form
     setShowNewDiagnosticForm(false);
   };
 
@@ -32,7 +38,7 @@ const DoctorDashboard = () => {
       <div className="container mx-auto p-4">
         {/* <h1 className="text-2xl font-bold mb-4"> Doctor Dashboard </h1> */}
         
-        <DoctorDiagnosisTable />
+        <DoctorDiagnosisTable pastDiagnosis={pastDiagnosis} />
         <SecondOpinionRequests />
 
         <div className="mb-4">
@@ -50,7 +56,7 @@ const DoctorDashboard = () => {
           </button>
         </div>
 
-        {showNewDiagnosticForm && <NewDiagnosticForm onClose={handleCloseForm} onSubmit={handleSubmitForm}/>}
+        {showNewDiagnosticForm && <NewDiagnosticForm onClose={handleCloseForm} onSubmit={handleSubmitForm} />}
       </div>
     </div>
   );

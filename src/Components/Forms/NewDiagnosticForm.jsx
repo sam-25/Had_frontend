@@ -1,3 +1,4 @@
+
 // NewDiagnosticForm.jsx
 import React, { useState } from 'react';
 
@@ -19,6 +20,12 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+    // Reset form after submission
+    setFormData({
+      patientName: '',
+      diagnosisName: '',
+      remarks: '',
+    });
   };
 
   return (
