@@ -1,17 +1,29 @@
-import React from 'react';
+// DoctorDashboard.jsx
+import React, { useState } from 'react';
 import TopMenuBar from '../../Components/TopMenuBar';
 import DoctorDiagnosisTable from '../../Components/DoctorNew/DoctorDiagnosisTable';
 import SecondOpinionRequests from '../../Components/DoctorNew/SecondOpinionRequests';
+import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
 
 const DoctorDashboard = () => {
+  const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
+
   const handleAddDiagnosis = () => {
-    // Add logic to handle adding diagnosis
+    setShowNewDiagnosticForm(true);
     console.log('Add Diagnosis clicked');
   };
 
   const handleViewPastDiagnosis = () => {
     // Add logic to handle viewing past diagnosis
     console.log('View Past Diagnosis clicked');
+  };
+
+  const handleCloseForm = () => {
+    setShowNewDiagnosticForm(false);
+  };
+
+  const handleSubmitForm = () => {
+    setShowNewDiagnosticForm(false);
   };
 
   return (
@@ -37,6 +49,8 @@ const DoctorDashboard = () => {
             View Past Diagnosis
           </button>
         </div>
+
+        {showNewDiagnosticForm && <NewDiagnosticForm onClose={handleCloseForm} onSubmit={handleSubmitForm}/>}
       </div>
     </div>
   );

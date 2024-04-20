@@ -1,3 +1,4 @@
+// NewDiagnosticForm.jsx
 import React, { useState } from 'react';
 
 const NewDiagnosticForm = ({ onClose, onSubmit }) => {
