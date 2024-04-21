@@ -47,9 +47,9 @@ const ConsultationTabs = () => {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        {/* <TestCard testName="X-ray" description="Description for Test 1" />
+        <TestCard testName="X-ray" description="Description for Test 1" />
         <TestCard testName="CT-Scan" description="Description for Test 2" />
-        <TestCard testName="Some Test" description="Description for Test 3" /> */}
+        <TestCard testName="Some Test" description="Description for Test 3" />
         {tests.map((test, index) => (
           <TestCard key={index} testName={test.testName} description={test.description} />
         ))}

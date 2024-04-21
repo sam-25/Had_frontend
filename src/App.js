@@ -14,14 +14,15 @@ function App() {
     <div className="App">
        <BrowserRouter>
           <Routes>
-              <Route path="/" element= {<LoginPage />}/>
+              {/* <Route path="/" element= {<LoginPage />}/>
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
-              <Route path="/Doctor" element = {<DoctorDashboardPage />} />
+              <Route path="/Doctor" element = {<DoctorDashboardPage />} /> */}
               {/* <Route path="/DoctorConsultation" element={<DoctorConsultation/>} /> */}
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 
               <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> */}
+              <Route path="/" element= {<DoctorConsultation />}/>
           </Routes>
         </BrowserRouter> 
 
