@@ -1,6 +1,7 @@
 
 // NewDiagnosticForm.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const NewDiagnosticForm = ({ onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -17,16 +18,33 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
-    // Reset form after submission
-    setFormData({
-      patientName: '',
-      diagnosisName: '',
-      remarks: '',
-    });
+    try {
+      let tempformdata={
+        "doctorId": 1,
+          "patientName": "sougandh",
+          "description": "haha"
+      }
+      const response = await axios.post('http://localhost:8080/createConsultation', tempformdata);
+      console.log('Response:', response.data);
+      // Reset form after successful submission
+      setFormData({
+        patientName: '',
+        diagnosisName: '',
+        remarks: '',
+      });
+      // Close the form
+      onClose();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Handle error as needed
+    }
   };
+  
+
+
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">

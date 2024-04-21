@@ -3,6 +3,7 @@ import ConsultationNavbar from '../../Components/DoctorNew/ConsultationNavbar'
 import ConsultationTabs from '../../Components/DoctorNew/ConsultationTabs'
 import DicomArea from '../../Components/DoctorNew/DicomArea'
 import Notes from '../../Components/DoctorNew/Notes'
+import ActionsNavBar from '../../Components/DoctorNew/ActionsNavBar'
 
 const DoctorConsultation = () => {
   return (
@@ -10,6 +11,7 @@ const DoctorConsultation = () => {
       <div className='col-span-1 h-screen'>
         <ConsultationNavbar />
         <ConsultationTabs />
+        <ActionsNavBar></ActionsNavBar>
       </div>
 
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
