@@ -1,9 +1,11 @@
 
 // NewDiagnosticForm.jsx
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const NewDiagnosticForm = ({ onClose, onSubmit }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     patientName: '',
     diagnosisName: '',
@@ -38,6 +40,7 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
       });
       // Close the form
       onClose();
+      window.location.reload();
     } catch (error) {
       console.error('Error submitting form:', error);
       // Handle error as needed
