@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const SignupForm = ({ onBack, onToggle ,userType}) => {
   const [name, setName] = useState('');
@@ -34,21 +35,22 @@ const SignupForm = ({ onBack, onToggle ,userType}) => {
   }
 
 
-  async function request(options){
+  async function request(user){
 
-      try{
-        let fetchRes = await fetch(
-          "http://localhost:8080/auth/addNewUser",
-          options); 
+      // try{
+      //   let fetchRes = await fetch(
+      //     "http://localhost:8080/auth/addNewUser",
+      //     options); 
 
-      }
-      catch(e){
-         console.log(e); 
-      }
-
+      // }
+      // catch(e){
+      //    console.log(e); 
+      // }
+      const response = await axios.post('http://localhost:8080/createPatient', user);
+      console.log('Response:', response.data);
   }
 
-  request(options); 
+  request(user); 
 
   };
 
