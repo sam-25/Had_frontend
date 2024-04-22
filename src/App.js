@@ -8,6 +8,8 @@ import DoctorDiagnosticPage from "./Pages/Doctor/DoctorDiagnosticPage";
 import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
 import Notes from './Components/DoctorNew/Notes';
 import './App.css'
+import auth from './Components/auth';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
        <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
-              <Route path="/Radiographer" element = {<MedicalLabPage />} />
-              <Route path="/Doctor" element = {<DoctorDashboardPage />} />
+              <Route path="/Radiographer" element = {auth() ? <MedicalLabPage /> : <LoginPage/>} />
+              <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
               <Route path="/DoctorConsultation" element={<DoctorConsultation/>} />
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 

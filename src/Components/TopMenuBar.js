@@ -3,13 +3,19 @@ import './TopMenuBar.css'; // Ensure the path is correct
 import accountIcon from './Assets/account-icon.svg';
 import notificationsIcon from './Assets/notifications.svg';
 import helpIcon from './Assets/help.svg';
-
+import { useNavigate } from 'react-router-dom';
 const TopMenuBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   // Define icon sizes
   const iconSize = { width: '30px', height: '30px' }; // Adjust the size as needed
-
+  const navigate = useNavigate();
+  
+  const handleSignout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  }
+  
   return (
     <div className="top-menu-bar">
       <div className="menu-items">
@@ -25,7 +31,7 @@ const TopMenuBar = () => {
           <div className="dropdown-menu">
             <button>Account Info</button>
             <button>Edit Profile</button>
-            <button>Sign Out</button>
+            <button onClick={handleSignout}>Sign Out</button>
           </div>
         )}
         <div className="menu-icon" onClick={() => console.log("Help clicked")}>
