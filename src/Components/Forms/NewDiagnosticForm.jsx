@@ -24,13 +24,21 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
+      var token = localStorage.getItem("token"); 
+      console.log(token);
+      
+
       let tempformdata={
-        doctorId: 1,
+        token: token,
         patientName: formData.patientName,
         name: formData.diagnosisName,
         description: formData.remarks
       }
       const response = await axios.post('http://localhost:8080/createConsultation', tempformdata);
+      
+      console.log("asds");
+      
       console.log('Response:', response.data);
       // Reset form after successful submission
       setFormData({

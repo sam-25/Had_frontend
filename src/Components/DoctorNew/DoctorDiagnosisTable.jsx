@@ -10,15 +10,19 @@ const DoctorDiagnosticPage = () => {
     const fetchData = async () => {
       try {
         
+        var token=localStorage.getItem("token");
+        console.log(token);
+
         const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations`, {
           params: {
-            doctorId: 1, // Replace with the actual doctorId value
+            token: token, // Replace with the actual doctorId value
             // Add more params as needed
           }
         });
+        console.log(response.data);
         // console.log(type(response.data[1].date));
         const modifiedData = response.data.map(item => ({
-          patientName: item.patient.user.name,
+          // patientName: item.patient.user.name,
           diagnosis: item.name,
           date: item.date, // Assuming "finished" field represents the date
           remarks: item.description, // You can add remarks if available in your data
