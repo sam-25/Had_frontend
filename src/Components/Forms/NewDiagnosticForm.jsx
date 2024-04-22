@@ -23,9 +23,10 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
     e.preventDefault();
     try {
       let tempformdata={
-        "doctorId": 1,
-          "patientName": "sougandh",
-          "description": "haha"
+        doctorId: 1,
+        patientName: formData.patientName,
+        name: formData.diagnosisName,
+        description: formData.remarks
       }
       const response = await axios.post('http://localhost:8080/createConsultation', tempformdata);
       console.log('Response:', response.data);
