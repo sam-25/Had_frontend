@@ -9,17 +9,20 @@ const DoctorDiagnosticPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
         const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations`, {
           params: {
             doctorId: 1, // Replace with the actual doctorId value
             // Add more params as needed
           }
         });
+        // console.log(type(response.data[1].date));
         const modifiedData = response.data.map(item => ({
           patientName: item.patient.user.name,
           diagnosis: item.name,
-          date: item.date.substring(0, Math.min(item.date.length, 10)), // Assuming "finished" field represents the date
+          date: item.date, // Assuming "finished" field represents the date
           remarks: item.description, // You can add remarks if available in your data
+          
         }));
         setData(modifiedData);
         setLoading(false);
