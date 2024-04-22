@@ -1,4 +1,6 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
+
 import ConsultationNavbar from '../../Components/DoctorNew/ConsultationNavbar'
 import ConsultationTabs from '../../Components/DoctorNew/ConsultationTabs'
 import DicomArea from '../../Components/DoctorNew/DicomArea'
@@ -6,6 +8,7 @@ import Notes from '../../Components/DoctorNew/Notes'
 import ActionsNavBar from '../../Components/DoctorNew/ActionsNavBar'
 
 const DoctorConsultation = () => {
+  let { id } = useParams();
   return (
     <div className='grid grid-cols-4'>
       <div className='col-span-1 h-screen'>
