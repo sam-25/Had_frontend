@@ -38,6 +38,9 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
  
        try{
 
+        console.log(name);
+        console.log(password);
+        
         let res = await axios.post("http://localhost:8080/auth/generateToken",
           {   
            username: name,
@@ -51,9 +54,9 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
           
         if(userType=="Radiographer") navigate("/Radiographer");
         else if (userType == "Doctor") navigate("/Doctor");
-        else{
-          navigate("/Doctor");
-        }
+        else if(userType == "Radiologist") navigate("/Radiologist");
+        else if(userType == "Admin") navigate("/Admin");
+        else if(userType == "Patient") navigate("/Patient");
            
        }
        catch(e){

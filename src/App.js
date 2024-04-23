@@ -6,6 +6,8 @@ import EmptyPage from "./Pages/EmptyPage";
 import DoctorDashboardPage from "./Pages/DoctorNew/DoctorDashboard";
 import DoctorDiagnosticPage from "./Pages/Doctor/DoctorDiagnosticPage";
 import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
+import PatientDashboard from './Pages/Patient/PatientDashboard'
+import PatientConsultation from './Pages/Patient/PatientConsultation';
 import Notes from './Components/DoctorNew/Notes';
 import './App.css'
 import auth from './Components/auth';
@@ -17,6 +19,11 @@ function App() {
        <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
+              <Route path="/Radiologist" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+              <Route path="/Patient" element = {auth() ? <PatientDashboard/>: <LoginPage></LoginPage>}/>
+              <Route path="/Radiographer" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+              <Route path="/Admin" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+
               <Route path="/Radiographer" element = {auth() ? <MedicalLabPage /> : <LoginPage/>} />
               <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
               {/* <Route path="/DoctorConsultation" element={<DoctorConsultation/>} /> */}

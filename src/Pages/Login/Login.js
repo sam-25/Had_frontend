@@ -12,31 +12,31 @@ const Login = () => {
 
   if (!userType) {
     return <UserTypeSelection onSelectUserType={(type) => setUserType(type)} />;
-    let val = localStorage.getItem('token'); 
-    if(val != null){
+    // let val = localStorage.getItem('token'); 
+    // if(val != null){
 
 
-      if(userType == 'Radiographer'){
-          try{
+    //   if(userType == 'Radiographer'){
+    //       try{
                  
 
-          }
-          catch{
+    //       }
+    //       catch{
              
-          }
-      }
-      else if(userType == 'Doctor'){
-         try{
-           let val = axios.get("")
+    //       }
+    //   }
+    //   else if(userType == 'Doctor'){
+    //      try{
+    //        let val = axios.get("")
              
-        }
-        catch{
+    //     }
+    //     catch{
            
-        }
-      }
+    //     }
+    //   }
        
      
-    }
+    // }
   }
 
   return (

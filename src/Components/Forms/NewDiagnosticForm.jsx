@@ -28,7 +28,8 @@ const NewDiagnosticForm = ({ onClose, onSubmit }) => {
       var token = localStorage.getItem("token"); 
       console.log(token);
       
-    
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
       let tempformdata={
         token: token,
         patientName: formData.patientName,
