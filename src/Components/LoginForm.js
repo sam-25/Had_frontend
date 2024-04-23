@@ -41,13 +41,18 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
         console.log(name);
         console.log(password);
         
-        let res = await axios.post("http://localhost:8080/auth/generateToken",
-          {   
-           username: name,
-           password: password, 
+        console.log(userType);
 
-          }
-        )
+        let res = await axios.post("http://localhost:8080/auth/generateToken", {   
+        username: name,
+        password: password,
+      }, {
+        params: {
+          role: userType
+        }
+      });
+      // console.log(res);
+      // console.log(type(res));
 
         var token = res.data; 
         localStorage.setItem("token",token); 
@@ -61,7 +66,8 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
        }
        catch(e){
           
-          console.log(e); 
+          alert(e.response.data); 
+          
        }
  
    }

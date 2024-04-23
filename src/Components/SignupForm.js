@@ -46,8 +46,14 @@ const SignupForm = ({ onBack, onToggle ,userType}) => {
       // catch(e){
       //    console.log(e); 
       // }
-      const response = await axios.post('http://localhost:8080/createPatient', user);
-      console.log('Response:', response.data);
+      try{
+        const response = await axios.post('http://localhost:8080/createPatient', user);
+        console.log('Response:', response.data);
+      }
+      catch(e){
+        alert(e.response.data);
+      }
+     
   }
 
   request(user); 
