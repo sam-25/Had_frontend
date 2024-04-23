@@ -16,7 +16,7 @@ const ActionsNavBar = ({ onUpload }) => {
 
   return (
     <div className="flex flex-col p-4">
-      <label htmlFor="file-upload" className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer mb-2">
+      {/* <label htmlFor="file-upload" className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer mb-2">
         Upload File
         <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
       </label>
@@ -26,7 +26,7 @@ const ActionsNavBar = ({ onUpload }) => {
         <input id="final-report-upload" type="file" className="hidden" onChange={handleFileChange} />
       </label>
 
-      {selectedFile && <span className="mb-2">{selectedFile.name}</span>}
+      {selectedFile && <span className="mb-2">{selectedFile.name}</span>} */}
     </div>
   );
 };

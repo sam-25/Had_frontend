@@ -28,6 +28,7 @@ function App() {
               <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
               {/* <Route path="/DoctorConsultation" element={<DoctorConsultation/>} /> */}
               <Route path="/DoctorConsultation/:id" element={<DoctorConsultation/>} />
+              <Route path="/PatientConsultation/:id" element={<PatientConsultation/>} />
 
               {/* <Route path="/Radiographer" element = {<MedicalLabPage />} />
               <Route path="/Radiographer" element = {<MedicalLabPage />} /> 
