@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const AddTestForm = ({ onClose, onSubmit, radiographers, radiologists }) => {
+const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiologists }) => {
   const [formData, setFormData] = useState({
     testName: '',
     radiographer: '',
@@ -16,9 +17,31 @@ const AddTestForm = ({ onClose, onSubmit, radiographers, radiologists }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    try {
     e.preventDefault();
-    onSubmit(formData);
+    // onSubmit(formData);
+    let tempformdata={
+      consultationId: parseInt(consultationId['consultationId']),
+      name: formData.testName,
+      description: formData.remarks, 
+    }
+
+    // console.log(consultationId);
+
+    console.log(tempformdata);
+        var token=localStorage.getItem("token");
+        console.log(token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const response = await axios.post('http://localhost:8080/consultation/createTest', tempformdata);
+
+        onClose();
+        window.location.reload();
+        // console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
   };
 
   return (

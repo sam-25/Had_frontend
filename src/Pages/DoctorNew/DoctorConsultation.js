@@ -9,11 +9,12 @@ import ActionsNavBar from '../../Components/DoctorNew/ActionsNavBar'
 
 const DoctorConsultation = () => {
   let { id } = useParams();
+  // console.log(id);
   return (
     <div className='grid grid-cols-4'>
       <div className='col-span-1 h-screen'>
-        <ConsultationNavbar />
-        <ConsultationTabs />
+        <ConsultationNavbar  consultationId = {id} />
+        <ConsultationTabs consultationId = {id}/>
         <ActionsNavBar></ActionsNavBar>
       </div>
 

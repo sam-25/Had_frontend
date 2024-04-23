@@ -24,13 +24,23 @@ const TestCard = ({ testName, description }) => {
   );
 };
 
-const ConsultationTabs = () => {
+const ConsultationTabs = ({consultationId}) => {
   const [tests, setTests] = useState([
 
   ]);
-
+  // console.log(consultationId);
   useEffect(() =>{
-    axios.get('http://localhost:8080/Testing')
+    var token=localStorage.getItem("token");
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+    var response = axios.get('http://localhost:8080/consultation/getTests',
+      {
+        params:{
+        consultationId: consultationId,
+      }
+    }
+  )
+
       .then(response => {
         console.log(response.data);
         setTests(response.data);
@@ -47,11 +57,11 @@ const ConsultationTabs = () => {
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked/>
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
-        <TestCard testName="X-ray" description="Description for Test 1" />
+        {/* <TestCard testName="X-ray" description="Description for Test 1" />
         <TestCard testName="CT-Scan" description="Description for Test 2" />
-        <TestCard testName="Some Test" description="Description for Test 3" />
+        <TestCard testName="Some Test" description="Description for Test 3" /> */}
         {tests.map((test, index) => (
-          <TestCard key={index} testName={test.testName} description={test.description} />
+          <TestCard key={index} testName={test.name} description={test.description} />
         ))}
       </div>
     </div>
