@@ -1,47 +1,47 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import {colourOptions} from '../RadiologistList';
+
+const animatedComponents = makeAnimated();
 
 const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiologists }) => {
   const [formData, setFormData] = useState({
     testName: '',
-    radiographer: '',
-    radiologist: '',
+    radiographer: [],
+    radiologist: [],
     remarks: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (name, selectedOption) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: selectedOption,
     }));
   };
 
   const handleSubmit = async (e) => {
     try {
-    e.preventDefault();
-    // onSubmit(formData);
-    let tempformdata={
-      consultationId: parseInt(consultationId['consultationId']),
-      name: formData.testName,
-      description: formData.remarks, 
+      e.preventDefault();
+      let tempformdata = {
+        consultationId: parseInt(consultationId['consultationId']),
+        name: formData.testName,
+        description: formData.remarks,
+        radiographerIds: formData.radiographer.map((option) => option.value),
+        radiologistIds: formData.radiologist.map((option) => option.value),
+      };
+
+      console.log(tempformdata);
+      var token = localStorage.getItem('token');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      const response = await axios.post('http://localhost:8080/consultation/createTest', tempformdata);
+
+      onClose();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
     }
-
-    // console.log(consultationId);
-
-    console.log(tempformdata);
-        var token=localStorage.getItem("token");
-        console.log(token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.post('http://localhost:8080/consultation/createTest', tempformdata);
-
-        onClose();
-        window.location.reload();
-        // console.log(response.data);
-  }
-  catch (error) {
-    console.log(error);
-  }
   };
 
   return (
@@ -57,7 +57,7 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               id="testName"
               name="testName"
               value={formData.testName}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             >
@@ -67,32 +67,31 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               <option value="Test 3">Test 3</option>
             </select>
           </div>
+
           <div className="mb-4">
             <label htmlFor="radiographer" className="block text-sm font-medium text-gray-700">
               Radiographer
             </label>
-            <input
-              type="text"
-              id="radiographer"
-              name="radiographer"
-              value={formData.radiographer}
-              onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
+            <Select
+              closeMenuOnSelect={false}
+              components={animatedComponents}
+              defaultValue={[]}
+              isMulti
+              options={colourOptions}
+              onChange={(selectedOption) => handleChange('radiographer', selectedOption)}
             />
           </div>
           <div className="mb-4">
             <label htmlFor="radiologist" className="block text-sm font-medium text-gray-700">
               Radiologist
             </label>
-            <input
-              type="text"
-              id="radiologist"
-              name="radiologist"
-              value={formData.radiologist}
-              onChange={handleChange}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
+            <Select
+              closeMenuOnSelect={false}
+              components={animatedComponents}
+              defaultValue={[]}
+              isMulti
+              options={colourOptions}
+              onChange={(selectedOption) => handleChange('radiologist', selectedOption)}
             />
           </div>
           <div className="mb-4">
@@ -103,7 +102,7 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               id="remarks"
               name="remarks"
               value={formData.remarks}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
               rows={4}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
