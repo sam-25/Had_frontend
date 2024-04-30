@@ -62,9 +62,9 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-md w-96">
-        <h2 className="text-xl font-semibold mb-4">Add Test Form</h2>
+        <h2 className="text-xl font-semibold mb-4">Add Radiographer Form</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label htmlFor="testName" className="block text-sm font-medium text-gray-700">
               Test Name
             </label>
@@ -81,7 +81,7 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               <option value="Test 2">Test 2</option>
               <option value="Test 3">Test 3</option>
             </select>
-          </div>
+          </div> */}
 
           <div className="mb-4">
             {/* <label htmlFor="radiographer" className="block text-sm font-medium text-gray-700">
@@ -113,7 +113,7 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
           </div>
           <div className="mb-4">
             <label htmlFor="remarks" className="block text-sm font-medium text-gray-700">
-              Remarks
+              Radiologist Name
             </label>
             <textarea
               id="remarks"
