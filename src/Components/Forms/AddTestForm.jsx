@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import {colourOptions} from '../RadiologistList';
+import RadiologistList from '../RadiologistList';
+import { colourOptions } from '../RadiologistList';
 
 const animatedComponents = makeAnimated();
 
 const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiologists }) => {
+  const [optionData, setOptionData] = useState([]);
+  
+  useEffect(() => {
+    // console.log("here, ", RadiologistList());
+    RadiologistList().then(radiologists => {
+      console.log(radiologists);
+      // console.log("asdasd");
+      setOptionData(radiologists)
+    }).catch(error => {
+      console.error('Error fetching radiologists:', error);
+      setOptionData([]);
+    });
+  }, [])
+
   const [formData, setFormData] = useState({
     testName: '',
     radiographer: [],
@@ -77,7 +92,8 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               components={animatedComponents}
               defaultValue={[]}
               isMulti
-              options={colourOptions}
+              // options={RadiologistList}
+              options={optionData}
               onChange={(selectedOption) => handleChange('radiographer', selectedOption)}
             />
           </div>
@@ -90,7 +106,8 @@ const AddTestForm = ({ consultationId, onClose, onSubmit, radiographers, radiolo
               components={animatedComponents}
               defaultValue={[]}
               isMulti
-              options={colourOptions}
+              // options={RadiologistList}
+              options = {optionData}
               onChange={(selectedOption) => handleChange('radiologist', selectedOption)}
             />
           </div>

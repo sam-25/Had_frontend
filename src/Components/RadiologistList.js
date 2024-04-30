@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const colourOptions = [
     { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
     { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -11,29 +13,32 @@ export const colourOptions = [
     { value: 'silver', label: 'Silver', color: '#666666' },
   ];
 
-
-// import axios from 'axios';
-
 // const fetchRadiologists = async () => {
-//   try {
-//     const response = await axios.get('http://localhost:8080/auth/getAllUsers', {
-//       params: {
-//         role: 'radiographer'
-//       }
-//     });
-//     const radiologists = response.data.map(radiologist => ({
-//       value: radiologist.id,
-//       label: radiologist.name,
-//       color: '#00B8D9',
-//       // Add other properties as needed
-//     }));
-//     return radiologists;
-//   } catch (error) {
-//     console.error('Error fetching radiologists:', error);
-//     return [];
-//   }
-// };
+const RadiologistList = async () => {
+  try {
+    console.log("p");
+    var token=localStorage.getItem("token");
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    const response = await axios.get('http://localhost:8080/auth/getAllUsers', {
+      params: {
+        role: 'radiographer'
+      }
+    });
+    console.log(response.data);
+    const radiologists = response.data.map(radiologist => ({
+      value: radiologist.id,
+      label: radiologist.name,
+      color: '#00B8D9',
+      // Add other properties as needed
+    }));
+    return radiologists;
+  } catch (error) {
+    console.error('Error fetching radiologists:', error);
+    return [];
+  }
+
+};
 
 // const RadiologistList = fetchRadiologists;
 
-// export default RadiologistList;
+export default RadiologistList;
