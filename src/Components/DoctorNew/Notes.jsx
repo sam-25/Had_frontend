@@ -15,9 +15,9 @@ const Notes = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-        handleAddNote();
-      }    
-  }
+      handleAddNote();
+    }
+  };
 
   // Scroll to bottom on initial load and when new notes are added
   useEffect(() => {
@@ -27,10 +27,11 @@ const Notes = () => {
   }, [notes]);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-gray-200 rounded-lg p-4">
+      <h2 className="text-lg font-semibold mb-2">Notes</h2>
       <div className="overflow-y-auto flex-grow" style={{ height: '250px' }} ref={notesRef}>
         {notes.map((note, index) => (
-          <div key={index} className="bg-base-100 p-2 m-1 rounded">
+          <div key={index} className="bg-white p-2 m-1 rounded">
             <strong>{note.user}:</strong> {note.text}
           </div>
         ))}
