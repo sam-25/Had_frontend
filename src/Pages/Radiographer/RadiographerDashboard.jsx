@@ -1,10 +1,12 @@
 // DoctorDashboard.jsx
 import React, { useState } from 'react';
 import TopMenuBar from '../../Components/TopMenuBar';
-import DoctorDiagnosisTable from '../../Components/Patient/PatientDiagnosisTable';
+import RadiographerDiagnosisTable from '../../Components/Radiographer/RadiographerDiagnosisTable';
 import SecondOpinionRequests from '../../Components/Patient/SecondOpinionRequests';
 import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
 import PatientDiagnosisTable from'../../Components/Patient/PatientDiagnosisTable'
+import RadiographerDiagnosticPage from '../../Components/Radiographer/RadiographerDiagnosisTable';
+
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
@@ -39,7 +41,9 @@ const DoctorDashboard = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4"> Radiographer Dashboard </h1>
         
-        <PatientDiagnosisTable pastDiagnosis={pastDiagnosis} />
+        {/* <PatientDiagnosisTable pastDiagnosis={pastDiagnosis} /> */}
+        {/* <DoctorDiagnosisTable> </DoctorDiagnosisTable> */}
+        <RadiographerDiagnosticPage></RadiographerDiagnosticPage>
         {/* <SecondOpinionRequests /> */}
 
         <div className="mb-4">

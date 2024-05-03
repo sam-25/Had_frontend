@@ -1,16 +1,47 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddRadiographerForm = ({ onClose, onSubmit }) => {
+const AddRadiographerForm = ({ onClose, onSubmit ,testId, consultationId}) => {
   const [radiographerName, setRadiographerName] = useState('');
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/radiographer', { name: radiographerName });
-      onSubmit(response.data);
+      e.preventDefault();
+
+      // console.log(tempformdata);
+      var token = localStorage.getItem('token');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      var response = axios.get('http://localhost:8080/consultation/getTests',
+      {
+        params: {
+          doctor: radiographerName,
+          // testId: testId,
+          consultationId: consultationId,
+        }
+      }
+    )
+
+
+    var token = localStorage.getItem('token');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      var response = axios.get('http://localhost:8080/consultation/getTests',
+      {
+        params: {
+          permittedDoctorName: radiographerName,
+          testId: testId,
+          consultationId: consultationId,
+        }
+      }
+    )
+
+
+
+
+      onClose();
+      window.location.reload();
     } catch (error) {
-      console.error('Error adding radiographer:', error);
+      console.log(error);
     }
   };
 

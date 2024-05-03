@@ -3,7 +3,7 @@ import axios from 'axios';
 import AddRadiographerForm from '../Forms/AddRadiographer';
 import AddRadiologistForm from '../Forms/AddRadiologist';
 
-const TestCard = ({ testName, description }) => {
+const TestCard = ({ testName, description, consultationId, testId}) => {
   const [radiographerForm, setRadiographerForm] = useState(false);
   const [radiologistForm, setRadiologistForm] = useState(false);
 
@@ -24,8 +24,8 @@ const TestCard = ({ testName, description }) => {
           <li><a onClick={() => setRadiologistForm(true)}>Add Radiologist</a></li>
         </ul>
       </div>
-    {radiographerForm && <AddRadiographerForm onClose={() => setRadiographerForm(false)} />}
-    {radiologistForm && <AddRadiologistForm onClose={() => setRadiologistForm(false)} />}
+    {radiographerForm && <AddRadiographerForm consultationId={consultationId} testId={testId} onClose={() => setRadiographerForm(false)} />}
+    {radiologistForm && <AddRadiologistForm consultationId={consultationId} testId={testId} onClose={() => setRadiologistForm(false)} />}
     </div>
   );
 };
@@ -62,7 +62,7 @@ const ConsultationTabs = ({ consultationId }) => {
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         {tests.map((test, index) => (
-          <TestCard key={index} testName={test.name} description={test.description} />
+          <TestCard testId= {test.id} key={index} testName={test.name} description={test.description} consultationId={consultationId}/>
         ))}
       </div>
     </div>

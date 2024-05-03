@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useTable} from 'react-table'
 
-const DoctorDiagnosticPage = () => {
+const RadiographerDiagnosticPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();  // Adding useNavigate hook
@@ -16,7 +16,7 @@ const DoctorDiagnosticPage = () => {
         var token=localStorage.getItem("token");
         console.log(token);
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations`, {
+        const response = await axios.get(`http://localhost:8080/doctor/getSecondaryConsultations`, {
           params: {
              // Replace with the actual doctorId value
             // Add more params as needed
@@ -113,7 +113,7 @@ const DoctorDiagnosticPage = () => {
   );
 };
 
-export default DoctorDiagnosticPage;
+export default RadiographerDiagnosticPage;
 
 
 

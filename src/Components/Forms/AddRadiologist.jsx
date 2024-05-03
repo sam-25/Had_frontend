@@ -1,16 +1,44 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddRadiologistForm = ({ onClose, onSubmit }) => {
+const AddRadiologistForm = ({ onClose, onSubmit ,testId, consultationId}) => {
   const [radiologistName, setRadiologistName] = useState('');
 
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/radiologist', { name: radiologistName });
-      onSubmit(response.data);
+      e.preventDefault();
+
+      // console.log(tempformdata);
+      var token = localStorage.getItem('token');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      var response = axios.get('http://localhost:8080/consultation/getTests',
+      {
+        params: {
+          doctor: radiologistName,
+          // testId: testId,
+          consultationId: consultationId,
+        }
+      }
+    )
+
+
+    var token = localStorage.getItem('token');
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      var response = axios.get('http://localhost:8080/consultation/getTests',
+      {
+        params: {
+          permittedDoctorName: radiologistName,
+          testId: testId,
+          consultationId: consultationId,
+        }
+      }
+    )
+
+      onClose();
+      window.location.reload();
     } catch (error) {
-      console.error('Error adding radiologist:', error);
+      console.log(error);
     }
   };
 
@@ -20,13 +48,13 @@ const AddRadiologistForm = ({ onClose, onSubmit }) => {
         <h2 className="text-xl font-semibold mb-4">Add Radiologist Form</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="radiologistName" className="block text-sm font-medium text-gray-700">
-              Radiologist Name
+            <label htmlFor="radiographerName" className="block text-sm font-medium text-gray-700">
+            Radiologist Name
             </label>
             <input
               type="text"
-              id="radiologistName"
-              name="radiologistName"
+              id="radiographerName"
+              name="radiographerName"
               value={radiologistName}
               onChange={(e) => setRadiologistName(e.target.value)}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
