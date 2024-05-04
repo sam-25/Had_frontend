@@ -6,43 +6,54 @@ const AddRadiographerForm = ({ onClose, onSubmit ,testId, consultationId}) => {
 
 
   const handleSubmit = async (e) => {
-    try {
+    // try {
       e.preventDefault();
-
+      console.log('1');
+      console.log(radiographerName);
       // console.log(tempformdata);
+      console.log(consultationId);
       var token = localStorage.getItem('token');
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      var response = axios.get('http://localhost:8080/consultation/getTests',
-      {
+      var response = await axios.post('http://localhost:8080/consultation/addSecondaryDoctor', {
+        // You can include request body here if needed
+      }, {
         params: {
           doctor: radiographerName,
-          // testId: testId,
+          // testId: testId, // Uncomment this line if you want to include testId
           consultationId: consultationId,
         }
-      }
-    )
+      });
 
+    console.log('2');
 
-    var token = localStorage.getItem('token');
+    console.log(response);
+
+      console.log(testId);
+      console.log(consultationId);
+      console.log(radiographerName);
+
+    // var token = localStorage.getItem('token');
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      var response = axios.get('http://localhost:8080/consultation/getTests',
-      {
-        params: {
-          permittedDoctorName: radiographerName,
-          testId: testId,
+      response = await axios.post('http://localhost:8080/test/permitDoctor', {
+
+      }, {
+        params:{
           consultationId: consultationId,
+          testId: testId,
+          permittedDoctorName: radiographerName,
         }
       }
-    )
+    );
 
-
-
+    console.log(response);
+    console.log(radiographerName, testId, consultationId);
+    console.log("here");
 
       onClose();
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+      // window.location.reload();
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -67,6 +78,7 @@ const AddRadiographerForm = ({ onClose, onSubmit ,testId, consultationId}) => {
           <div className="flex justify-end">
             <button
               type="submit"
+              onClick={handleSubmit}
               className="bg-indigo-600 text-white py-2 px-4 rounded-md mr-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Submit

@@ -1,45 +1,59 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddRadiologistForm = ({ onClose, onSubmit ,testId, consultationId}) => {
-  const [radiologistName, setRadiologistName] = useState('');
+const AddRadiographerForm = ({ onClose, onSubmit ,testId, consultationId}) => {
+  const [radiographerName, setRadiographerName] = useState('');
 
 
   const handleSubmit = async (e) => {
-    try {
+    // try {
       e.preventDefault();
-
+      console.log('1');
+      console.log(radiographerName);
       // console.log(tempformdata);
+      console.log(consultationId);
       var token = localStorage.getItem('token');
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      var response = axios.get('http://localhost:8080/consultation/getTests',
-      {
+      var response = await axios.post('http://localhost:8080/consultation/addSecondaryDoctor', {
+        // You can include request body here if needed
+      }, {
         params: {
-          doctor: radiologistName,
-          // testId: testId,
+          doctor: radiographerName,
+          // testId: testId, // Uncomment this line if you want to include testId
           consultationId: consultationId,
         }
-      }
-    )
+      });
 
+    console.log('2');
 
-    var token = localStorage.getItem('token');
+    console.log(response);
+
+      console.log(testId);
+      console.log(consultationId);
+      console.log(radiographerName);
+
+    // var token = localStorage.getItem('token');
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      var response = axios.get('http://localhost:8080/consultation/getTests',
-      {
-        params: {
-          permittedDoctorName: radiologistName,
-          testId: testId,
+      response = await axios.post('http://localhost:8080/test/permitDoctor', {
+
+      }, {
+        params:{
           consultationId: consultationId,
+          testId: testId,
+          permittedDoctorName: radiographerName,
         }
       }
-    )
+    );
+
+    console.log(response);
+    console.log(radiographerName, testId, consultationId);
+    console.log("here");
 
       onClose();
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+      // window.location.reload();
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -49,14 +63,14 @@ const AddRadiologistForm = ({ onClose, onSubmit ,testId, consultationId}) => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="radiographerName" className="block text-sm font-medium text-gray-700">
-            Radiologist Name
+              Radiologist Name
             </label>
             <input
               type="text"
               id="radiographerName"
               name="radiographerName"
-              value={radiologistName}
-              onChange={(e) => setRadiologistName(e.target.value)}
+              value={radiographerName}
+              onChange={(e) => setRadiographerName(e.target.value)}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
             />
@@ -64,6 +78,7 @@ const AddRadiologistForm = ({ onClose, onSubmit ,testId, consultationId}) => {
           <div className="flex justify-end">
             <button
               type="submit"
+              onClick={handleSubmit}
               className="bg-indigo-600 text-white py-2 px-4 rounded-md mr-2 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               Submit
@@ -82,4 +97,4 @@ const AddRadiologistForm = ({ onClose, onSubmit ,testId, consultationId}) => {
   );
 };
 
-export default AddRadiologistForm;
+export default AddRadiographerForm;

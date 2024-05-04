@@ -6,6 +6,7 @@ import ConsultationTabs from '../../Components/DoctorNew/ConsultationTabs'
 import DicomArea from '../../Components/DoctorNew/DicomArea'
 import Notes from '../../Components/DoctorNew/Notes'
 import ActionsNavBar from '../../Components/DoctorNew/ActionsNavBar'
+import FileComponent from '../../Components/FileComponent'
 
 const DoctorConsultation = () => {
   let { id } = useParams();
@@ -15,7 +16,9 @@ const DoctorConsultation = () => {
       <div className='col-span-1 h-screen'>
         <ConsultationNavbar  consultationId = {id} />
         <ConsultationTabs consultationId = {id}/>
-        <ActionsNavBar></ActionsNavBar>
+        {/* <ActionsNavBar></ActionsNavBar> */}
+        <FileComponent FileType={"Upload Document"}></FileComponent>
+
       </div>
 
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
