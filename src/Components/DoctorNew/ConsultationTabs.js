@@ -3,12 +3,20 @@ import axios from 'axios';
 import AddRadiographerForm from '../Forms/AddRadiographer';
 import AddRadiologistForm from '../Forms/AddRadiologist';
 
-const TestCard = ({ testName, description, consultationId, testId}) => {
+const TestCard = ({ testName, description, consultationId, testId, onClick, setTestId }) => {
   const [radiographerForm, setRadiographerForm] = useState(false);
   const [radiologistForm, setRadiologistForm] = useState(false);
 
+  const handleTestClick = (testId) => {
+    setTestId(testId); // Call the updateTestId function passed from ConsultationTabs
+  };
+
   return (
-    <div className="flex items-center justify-between bg-base-200 border border-gray-100 rounded-lg shadow-md p-4 mb-4">
+    <div
+      className="flex items-center justify-between bg-base-200 border border-gray-100 rounded-lg shadow-md p-4 mb-4"
+      onClick={() => handleTestClick(testId)} // Call onClick with testId when the card is clicked
+      style={{ cursor: 'pointer' }}    // Change cursor to pointer to indicate clickability
+    >
       <div>
         <h3 className="text-lg font-semibold mb-2">{testName}</h3>
         <p className="text-sm text-gray-600">{description}</p>
@@ -24,13 +32,13 @@ const TestCard = ({ testName, description, consultationId, testId}) => {
           <li><a onClick={() => setRadiologistForm(true)}>Add Radiologist</a></li>
         </ul>
       </div>
-    {radiographerForm && <AddRadiographerForm consultationId={consultationId} testId={testId} onClose={() => setRadiographerForm(false)} />}
-    {radiologistForm && <AddRadiologistForm consultationId={consultationId} testId={testId} onClose={() => setRadiologistForm(false)} />}
+      {radiographerForm && <AddRadiographerForm consultationId={consultationId} testId={testId} onClose={() => setRadiographerForm(false)} />}
+      {radiologistForm && <AddRadiologistForm consultationId={consultationId} testId={testId} onClose={() => setRadiologistForm(false)} />}
     </div>
   );
 };
 
-const ConsultationTabs = ({ consultationId }) => {
+const ConsultationTabs = ({ consultationId , setTestId}) => {
   const [tests, setTests] = useState([]);
 
   useEffect(() => {
@@ -62,7 +70,7 @@ const ConsultationTabs = ({ consultationId }) => {
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked />
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
         {tests.map((test, index) => (
-          <TestCard testId= {test.id} key={index} testName={test.name} description={test.description} consultationId={consultationId}/>
+          <TestCard testId= {test.id} key={index} testName={test.name} description={test.description} consultationId={consultationId} setTestId={setTestId}/>
         ))}
       </div>
     </div>

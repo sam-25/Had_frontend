@@ -1,59 +1,54 @@
-import React, { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useRef } from 'react';
+import { Toast } from 'primereact/toast';
+import { FileUpload } from 'primereact/fileupload';
 
-const FileComponent = ({FileType}) => {
-  const [files, setFiles] = useState([]);
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*, application/pdf',
-    onDrop: (acceptedFiles) => {
-      setFiles([...files, ...acceptedFiles]);
-    },
-  });
+export default function AutoDemo() {
+    const toast = useRef(null);
 
-  const handleDelete = (index) => {
-    const newFiles = [...files];
-    newFiles.splice(index, 1);
-    setFiles(newFiles);
-  };
-
-  const handleOpenFile = (file) => {
-    window.open(URL.createObjectURL(file));
-  };
-
-  return (
-    <div className="container mx-auto mt-8">
-      <div >
-        <label {...getRootProps()}>
-          <input {...getInputProps()} />
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-md cursor-pointer">
-            {FileType}
-          </button>
-        </label>
-      </div>
-      <div className="mt-4">
-        {files.map((file, index) => (
-          <div key={index} className="flex items-center justify-between p-2 bg-gray-200">
-            <p className="mr-4">{file.name}</p>
-            <div>
-              <button
-                className="px-2 py-1 bg-blue-500 text-white rounded mr-2"
-                onClick={() => handleOpenFile(file)}
-              >
-                Open
-              </button>
-              <button
-                className="px-2 py-1 bg-red-500 text-white rounded"
-                onClick={() => handleDelete(index)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default FileComponent;
+    const onUpload = (event) => {
+        // Access the uploaded file from the event object
+        const file = event.files[0];
+        
+        // You can perform additional checks or validations here
+        
+        // Assuming you are using fetch API for uploading file to backend
+        fetch('/api/upload', {
+            method: 'POST',
+            body: file
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message if upload is successful
+                toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+            } else {
+                // Show error message if upload fails
+                toast.current.show({ severity: 'error', summary: 'Error', detail: 'File Upload Failed' });
+            }
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            // Show error message if an error occurs during upload
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'An error occurred while uploading the file' });
+        });
+    };
+        
+    return (
+        <div className="card flex justify-content-center">
+            <Toast ref={toast}></Toast>
+            <FileUpload 
+                mode="basic" 
+                name="demo[]" 
+                url="/api/upload" 
+                accept="image/*" 
+                maxFileSize={1000000} 
+                onUpload={onUpload} 
+                auto 
+                chooseLabel="Upload Final Report" 
+            />
+        </div>  
+    )
+}

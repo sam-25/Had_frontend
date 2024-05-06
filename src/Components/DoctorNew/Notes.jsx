@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const Notes = () => {
+const Notes = ({testId}) => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
 
