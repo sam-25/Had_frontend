@@ -22,16 +22,13 @@ export default function AutoDemo() {
         })
         .then(response => {
             if (response.ok) {
-                // Show success message if upload is successful
                 toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
             } else {
-                // Show error message if upload fails
                 toast.current.show({ severity: 'error', summary: 'Error', detail: 'File Upload Failed' });
             }
         })
         .catch(error => {
             console.error('Error uploading file:', error);
-            // Show error message if an error occurs during upload
             toast.current.show({ severity: 'error', summary: 'Error', detail: 'An error occurred while uploading the file' });
         });
     };
