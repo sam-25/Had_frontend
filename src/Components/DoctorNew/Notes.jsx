@@ -1,15 +1,41 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios'; // Import axios for making HTTP requests
 
-const Notes = ({testId}) => {
+const Notes = ({ testId }) => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
 
   const notesRef = useRef(null);
 
+  useEffect(() => {
+    // Fetch notes from the backend when the component mounts
+    fetchNotes();
+  }, []);
+
+  const fetchNotes = async () => {
+    try {
+      const response = await axios.get('/api/notes'); // Replace '/api/notes' with your backend endpoint for fetching notes
+      setNotes(response.data); // Update state with the fetched notes
+      scrollToBottom(); // Scroll to bottom after fetching notes
+    } catch (error) {
+      console.error('Error fetching notes:', error);
+    }
+  };
+
+  const postNote = async () => {
+    try {
+      // Send a POST request to the backend to add a new note
+      await axios.post('/api/notes', { user: 'User', text: newNote }); // Replace '/api/notes' with your backend endpoint for posting notes
+      setNewNote(''); // Clear the input field after posting the note
+      fetchNotes(); // Fetch updated notes after posting a new note
+    } catch (error) {
+      console.error('Error posting note:', error);
+    }
+  };
+
   const handleAddNote = () => {
     if (newNote.trim() !== '') {
-      setNotes([...notes, { user: 'User', text: newNote }]);
-      setNewNote('');
+      postNote(); // Call postNote function to add the new note
     }
   };
 
@@ -19,12 +45,11 @@ const Notes = ({testId}) => {
     }
   };
 
-  // Scroll to bottom on initial load and when new notes are added
-  useEffect(() => {
+  const scrollToBottom = () => {
     if (notesRef.current) {
       notesRef.current.scrollTop = notesRef.current.scrollHeight;
     }
-  }, [notes]);
+  };
 
   return (
     <div className="flex flex-col h-full bg-gray-200 rounded-lg p-4">

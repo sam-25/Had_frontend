@@ -37,7 +37,7 @@ export default function AutoDemo() {
     };
         
     return (
-        <div className="card flex justify-content-center" style={{display: 'flex', position: 'absolute', bottom: 10, justifyContent: 'center', alignItems: 'center', left: 70}}>
+        <div className="card flex justify-content-center" style={{display: 'flex', position: 'absolute', bottom: 10, left: '80%'}}>
             <Toast ref={toast}></Toast>
             <FileUpload 
                 mode="basic" 
@@ -47,7 +47,7 @@ export default function AutoDemo() {
                 maxFileSize={1000000} 
                 onUpload={onUpload} 
                 auto 
-                chooseLabel="Upload Final Report" 
+                chooseLabel="Upload Doc" 
             />
         </div>  
     )
