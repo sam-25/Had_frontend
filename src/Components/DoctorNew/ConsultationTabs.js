@@ -8,14 +8,16 @@ const TestCard = ({ testName, description, consultationId, testId, onClick, setT
   const [radiologistForm, setRadiologistForm] = useState(false);
 
   const handleTestClick = (testId) => {
-    setTestId(testId); // Call the updateTestId function passed from ConsultationTabs
+    if (testId !== setTestId) { // Only setTestId if it's different
+      setTestId(testId); 
+    }
   };
 
   return (
     <div
       className="flex items-center justify-between bg-base-200 border border-gray-100 rounded-lg shadow-md p-4 mb-4"
-      onClick={() => handleTestClick(testId)} // Call onClick with testId when the card is clicked
-      style={{ cursor: 'pointer' }}    // Change cursor to pointer to indicate clickability
+      onClick={() => handleTestClick(testId)} 
+      style={{ cursor: 'pointer' }}    
     >
       <div>
         <h3 className="text-lg font-semibold mb-2">{testName}</h3>

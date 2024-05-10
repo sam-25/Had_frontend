@@ -18,7 +18,6 @@ const SecondOpinionRequests = () => {
         remarks: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         status: 'Approved',
       },
-      // Add more data as needed
     ],
     []
   );
@@ -68,12 +67,10 @@ const SecondOpinionRequests = () => {
   } = useTable({ columns, data });
 
   const handleApprove = (id) => {
-    // Implement logic to handle approve action
     console.log(`Request ${id} approved`);
   };
 
   const handleReject = (id) => {
-    // Implement logic to handle reject action
     console.log(`Request ${id} rejected`);
   };
 

@@ -7,7 +7,7 @@ import {useTable} from 'react-table'
 const DoctorDiagnosticPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();  // Adding useNavigate hook
+  const navigate = useNavigate();  
 
     useEffect(() => {
     const fetchData = async () => {
@@ -18,17 +18,14 @@ const DoctorDiagnosticPage = () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         const response = await axios.get(`http://localhost:8080/doctor/getPrimaryConsultations`, {
           params: {
-             // Replace with the actual doctorId value
-            // Add more params as needed
           }
         });
         console.log(response.data);
-        // console.log(type(response.data[1].date));
         const modifiedData = response.data.map(item => ({
           patientName: item.patientName,
           diagnosis: item.name,
-          date: item.date, // Assuming "finished" field represents the date
-          remarks: item.description, // You can add remarks if available in your data
+          date: item.date, 
+          remarks: item.description, 
           diagnosisId: item.id,
         }));
 

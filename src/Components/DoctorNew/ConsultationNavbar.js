@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddTestForm from '../Forms/AddTestForm'; // Import the AddTestForm component
+import AddTestForm from '../Forms/AddTestForm';
 
 const ConsultationNavbar = ( consultationId ) => {
   const [showAddTestForm, setShowAddTestForm] = useState(false);
@@ -25,7 +25,6 @@ const ConsultationNavbar = ( consultationId ) => {
         </div>
       </div>
       
-      {/* Conditionally render the AddTestForm component */}
       {showAddTestForm && <AddTestForm onClose={() => setShowAddTestForm(false)}  consultationId={consultationId} />}
     </div>
   );
