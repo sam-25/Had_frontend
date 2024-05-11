@@ -21,7 +21,7 @@ const DoctorConsultation = () => {
         <ConsultationNavbar consultationId={id} />
         <ConsultationTabs consultationId={id} setTestId={setTestId} /> 
         {/* <ActionsNavBar></ActionsNavBar> */}
-        <FileComponent FileType={"Upload Document"}></FileComponent>
+        <FileComponent FileType={"Upload Final Report"}></FileComponent>
       </div>
 
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
