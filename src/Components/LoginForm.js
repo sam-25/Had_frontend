@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import MedicalLabPage from '../Pages/MedicalLab/MedicalLabPage';
 const LoginForm = ({ onBack, onToggle ,userType}) => {
   let howle = 0;
   const [name, setName] = useState('');

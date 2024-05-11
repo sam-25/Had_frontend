@@ -4,6 +4,7 @@ import TopMenuBar from '../../Components/TopMenuBar';
 import DoctorDiagnosisTable from '../../Components/DoctorNew/DoctorDiagnosisTable';
 import SecondOpinionRequests from '../../Components/DoctorNew/SecondOpinionRequests';
 import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
+import './DoctorDashboard.css'
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
@@ -15,7 +16,6 @@ const DoctorDashboard = () => {
   };
 
   const handleViewPastDiagnosis = () => {
-    // Add logic to handle viewing past diagnosis
     console.log('View Past Diagnosis clicked');
   };
 
@@ -24,11 +24,8 @@ const DoctorDashboard = () => {
   };
 
   const handleSubmitForm = (formData) => {
-    // Handle form submission
     console.log('Form submitted:', formData);
-    // Add the new diagnosis to the past diagnosis list
     setPastDiagnosis([...pastDiagnosis, formData]);
-    // Close the form
     setShowNewDiagnosticForm(false);
   };
 

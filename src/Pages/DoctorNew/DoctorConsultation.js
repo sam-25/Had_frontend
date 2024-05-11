@@ -35,7 +35,7 @@ const DoctorConsultation = () => {
           </div>
           <div className='flex-2 w-1/3'>
               {/* <UploadDocs /> */}
-              <FileDisplay></FileDisplay>
+              <FileDisplay  testId={testId}></FileDisplay>
               <UploadDocs></UploadDocs>
           </div>
         </div>
