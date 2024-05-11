@@ -6,7 +6,10 @@ import DoctorDashboardPage from "./Pages/DoctorNew/DoctorDashboard";
 import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
 import PatientDashboard from './Pages/Patient/PatientDashboard'
 import RadiographerDashboard from './Pages/Radiographer/RadiographerDashboard'
+import RadiologistDashboard from './Pages/Radiologist/RadiologistDashboard'
+
 import PatientConsultation from './Pages/Patient/PatientConsultation';
+import RadiologistConsultation from './Pages/Radiologist/RadiologistConsultation';
 import Notes from './Components/DoctorNew/Notes';
 import RadiographerConsultation from './Pages/Radiographer/RadiographerConsultation'
 import './App.css'
@@ -20,14 +23,16 @@ function App() {
        <BrowserRouter>
           <Routes>
               <Route path="/" element= {<LoginPage />}/>
-              <Route path="/Radiologist" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+              <Route path="/Radiologist" element = {auth() ? <RadiologistDashboard /> : <LoginPage></LoginPage>} />
               <Route path="/Patient" element = {auth() ? <PatientDashboard/>: <LoginPage></LoginPage>}/>
               <Route path="/Radiographer" element = {auth() ? <RadiographerDashboard /> : <LoginPage></LoginPage>} />
               <Route path="/Admin" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
-              
               <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+              
               <Route path="/DoctorConsultation/:id" element={<DoctorConsultation/>} />
               <Route path="/PatientConsultation/:id" element={<PatientConsultation/>} />
+              <Route path="/RadiographerConsultation/:id" element={<RadiographerConsultation/>} />
+              <Route path="/RadiologistConsultation/:id" element={<RadiologistConsultation/>} />
 
               {/* <Route path="/" element= {< RadiographerConsultation/>}/> */}
 

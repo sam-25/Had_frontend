@@ -6,7 +6,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
-export default function AutoDemo() {
+export default function AutoDemo({FileType}) {
     const toast = useRef(null);
 
     const onUpload = (event) => {
@@ -44,7 +44,7 @@ export default function AutoDemo() {
                 maxFileSize={1000000} 
                 onUpload={onUpload} 
                 auto 
-                chooseLabel="Upload Final Report" 
+                chooseLabel={FileType} 
             />
         </div>  
     )

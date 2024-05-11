@@ -95,7 +95,7 @@ const RadiographerDiagnosticPage = () => {
             {rows.map(row => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/RadiographerConsultation/${row.original.diagnosisId}`)}>
+                <tr {...row.getRowProps()} className="hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/RadiologistConsultation/${row.original.diagnosisId}`)}>
                   {row.cells.map(cell => {
                     return (
                       <td {...cell.getCellProps()} className="p-2 border">

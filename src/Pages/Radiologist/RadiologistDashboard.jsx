@@ -1,9 +1,12 @@
 // DoctorDashboard.jsx
 import React, { useState } from 'react';
 import TopMenuBar from '../../Components/TopMenuBar';
-import DoctorDiagnosisTable from '../../Components/DoctorNew/DoctorDiagnosisTable';
-import SecondOpinionRequests from '../../Components/DoctorNew/SecondOpinionRequests';
+import RadiologistDiagnosisTable from '../../Components/Radiologist/RadiologistDiagnosisTable';
+import SecondOpinionRequests from '../../Components/Patient/SecondOpinionRequests';
 import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
+import PatientDiagnosisTable from'../../Components/Patient/PatientDiagnosisTable'
+import RadiologistDiagnosticPage from '../../Components/Radiologist/RadiologistDiagnosisTable';
+
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
@@ -38,16 +41,18 @@ const DoctorDashboard = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4"> Radiologist Dashboard </h1>
         
-        <DoctorDiagnosisTable pastDiagnosis={pastDiagnosis} />
-        <SecondOpinionRequests />
+        {/* <PatientDiagnosisTable pastDiagnosis={pastDiagnosis} /> */}
+        {/* <DoctorDiagnosisTable> </DoctorDiagnosisTable> */}
+        <RadiologistDiagnosticPage></RadiologistDiagnosticPage>
+        {/* <SecondOpinionRequests /> */}
 
         <div className="mb-4">
-          <button
+          {/* <button
             className="bg-blue-500 text-white px-4 py-2 rounded mr-4"
             onClick={handleAddDiagnosis}
           >
             Add Diagnosis
-          </button>
+          </button> */}
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"
             onClick={handleViewPastDiagnosis}
