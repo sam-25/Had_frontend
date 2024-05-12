@@ -80,7 +80,7 @@ const AddRadiologistForm = ({ onSubmit }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-md max-h-[80vh] overflow-y-auto">
-        <div className="bg-white p-6 rounded-lg shadow-md w-96">
+        <div className="bg-white p-6 w-96">
           <h2 className="text-xl font-semibold mb-4">New Radiologist</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -115,7 +115,8 @@ const AddRadiologistForm = ({ onSubmit }) => {
               <label htmlFor="Specialization" className="block text-sm font-medium text-gray-700">
                 Specialization
               </label>
-              <textarea
+              <input
+                type="text"
                 id="Specialization"
                 name="Specialization"
                 value={formData.remarks}
@@ -129,7 +130,8 @@ const AddRadiologistForm = ({ onSubmit }) => {
               <label htmlFor="medicalLisenceNumber" className="block text-sm font-medium text-gray-700">
                 MedicalLisenceNumber
               </label>
-              <textarea
+              <input
+                type="text"
                 id="medicalLisenceNumber"
                 name="medicalLisenceNumber"
                 value={formData.remarks}
@@ -139,7 +141,7 @@ const AddRadiologistForm = ({ onSubmit }) => {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="yearsOfExperince" className="block text-sm font-medium text-gray-700">
                 YearsOfExperince
               </label>
@@ -166,7 +168,7 @@ const AddRadiologistForm = ({ onSubmit }) => {
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 required
               />
-            </div>
+            </div> */}
             <div className="flex justify-end">
               <button
                 type="submit"

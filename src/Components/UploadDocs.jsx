@@ -28,7 +28,7 @@ const UploadFiles = ({ testId }) => {
     
 
     return (
-        <div className="mt-4">
+        <div className="mt-4" style={{marginLeft: '110px'}}>
             <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Upload Docs
             </label>

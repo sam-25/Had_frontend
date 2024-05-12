@@ -26,8 +26,8 @@ const DicomUpload = ({ testId }) => {
     
 
     return (
-        <div className="mt-4">
-            <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <div className="mt-4" style={{ position: 'fixed', bottom: '20px', left: '100px' }}  >
+            <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
                 Upload DICOM
             </label>
             <input

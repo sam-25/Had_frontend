@@ -59,7 +59,7 @@ const LoginForm = ({ onBack, onToggle ,userType}) => {
         if(userType=="Radiographer") navigate("/Radiographer");
         else if (userType == "Doctor") navigate("/Doctor");
         else if(userType == "Radiologist") navigate("/Radiologist");
-        else if(userType == "Admin") navigate("/Admin");
+        else if(userType == "Admin") navigate("/AdminDashboard");
         else if(userType == "Patient") navigate("/Patient");
            
        }

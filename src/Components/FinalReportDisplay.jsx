@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const FileDisplay = ({ consultationId }) => {
+const FinalReportDisplay = ({ consultationId }) => {
+    console.log('FInal Report Display')
     const [files, setFiles] = useState([]);
     const [error, setError] = useState(null);
     const [urls, setUrls] = useState([]);
@@ -68,4 +69,4 @@ const FileDisplay = ({ consultationId }) => {
     );
 };
 
-export default FileDisplay;
+export default FinalReportDisplay;

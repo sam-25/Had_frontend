@@ -30,7 +30,7 @@ function App() {
               <Route path="/Radiologist" element = {auth() ? <RadiologistDashboard /> : <LoginPage></LoginPage>} />
               <Route path="/Patient" element = {auth() ? <PatientDashboard/>: <LoginPage></LoginPage>}/>
               <Route path="/Radiographer" element = {auth() ? <RadiographerDashboard /> : <LoginPage></LoginPage>} />
-              <Route path="/AdminDashboard" element = { <Dashboard/> }/>
+              <Route path="/AdminDashboard" element = { auth() ? <Dashboard/> : <LoginPage></LoginPage>}/>
               <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
 
               <Route path="/DoctorConsultation/:id" element={<DoctorConsultation/>} />
