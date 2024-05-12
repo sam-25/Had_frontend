@@ -70,7 +70,7 @@ const ConsultationTabs = ({ consultationId , setTestId}) => {
       <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">Chats go here</div>
 
       <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Tests" checked />
-      <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6" style={{ maxHeight: '350px', overflowY: 'auto' , overflowX: 'hidden'}}>
         {tests.map((test, index) => (
           <TestCard testId= {test.id} key={index} testName={test.name} description={test.description} consultationId={consultationId} setTestId={setTestId}/>
         ))}

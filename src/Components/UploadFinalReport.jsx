@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
 
-const UploadFiles = ({ testId }) => {
-    console.log('Upload Files here');
-    console.log(testId);
+const UploadFinalReport = ({ consultationId }) => {
+    console.log('Finalwedjwbek');
+    console.log(consultationId);
     const fileInputRef = useRef(null);
 
     const handleUpload = async () => {
@@ -15,11 +15,12 @@ const UploadFiles = ({ testId }) => {
         }
     
         try {
+            console.log("in final report");
             const token = localStorage.getItem('token');
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            console.log("in the upload normal files its working")
-            const params = { testId: testId, fileName: 'dummy' };
-            const response = await axios.post('http://localhost:8080/test/createVersion2', formData, { params });
+    
+            const params = { consultationId: consultationId, fileName: 'dummy' };
+            const response = await axios.post('http://localhost:8080/addFinalReport', formData, { params });
             console.log('Files uploaded successfully');
         } catch (error) {
             console.error('Error uploading files:', error);
@@ -28,9 +29,9 @@ const UploadFiles = ({ testId }) => {
     
 
     return (
-        <div className="mt-4">
+        <div className="mt-4 ml-20">
             <label htmlFor="file-upload" className="cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Upload Docs
+                Upload Final Document
             </label>
             <input
                 id="file-upload"
@@ -45,7 +46,7 @@ const UploadFiles = ({ testId }) => {
     );
 };
 
-export default UploadFiles;
+export default UploadFinalReport;
 
 
 

@@ -10,19 +10,25 @@ import FileComponent from '../../Components/FileComponent';
 import UploadDocs from '../../Components/UploadDocs';
 import FileDisplay from '../../Components/FileDisplay';
 import ImageViewer from '../../Components/ImageViewer';
+import FinalReportDisplay from '../../Components/FinalReportDisplay'
+import UploadFinalReport from '../../Components/UploadFinalReport'
+
 
 const DoctorConsultation = () => {
   let { id } = useParams();
   // Initialize testId state with a default value of 0
   const [testId, setTestId] = useState(0); 
-
+  
   return (
     <div className='grid grid-cols-4'>
       <div className='col-span-1 h-screen'>
         <ConsultationNavbar consultationId={id} />
         <ConsultationTabs consultationId={id} setTestId={setTestId} /> 
         {/* <ActionsNavBar></ActionsNavBar> */}
-        <FileComponent FileType={"Upload Final Report"}></FileComponent>
+        {/* <FileComponent FileType={"Upload Final Report"}></FileComponent> */}
+
+        <FinalReportDisplay  consultationId={id}></FinalReportDisplay>
+        <UploadFinalReport consultationId={id}></UploadFinalReport>
       </div>
 
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
@@ -38,7 +44,7 @@ const DoctorConsultation = () => {
           <div className='flex-2 w-1/3'>
               {/* <UploadDocs /> */}
               <FileDisplay  testId={testId}></FileDisplay>
-              <UploadDocs></UploadDocs>
+              {/* <UploadDocs  testId={testId}> </UploadDocs> */}
           </div>
         </div>
 

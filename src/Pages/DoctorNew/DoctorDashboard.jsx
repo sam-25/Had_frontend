@@ -1,14 +1,19 @@
-// DoctorDashboard.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopMenuBar from '../../Components/TopMenuBar';
 import DoctorDiagnosisTable from '../../Components/DoctorNew/DoctorDiagnosisTable';
 import SecondOpinionRequests from '../../Components/DoctorNew/SecondOpinionRequests';
 import NewDiagnosticForm from '../../Components/Forms/NewDiagnosticForm';
-import './DoctorDashboard.css'
+import './DoctorDashboard.css';
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
   const [pastDiagnosis, setPastDiagnosis] = useState(false);
+  const [modifiedPastDiagnosis, setModifiedPastDiagnosis] = useState([]);
+
+  useEffect(() => {
+    // Filter or manipulate pastDiagnosis data here if needed
+    setModifiedPastDiagnosis(pastDiagnosis);
+  }, [pastDiagnosis]);
 
   const handleAddDiagnosis = () => {
     setShowNewDiagnosticForm(true);
@@ -36,7 +41,7 @@ const DoctorDashboard = () => {
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4"> Doctor Dashboard </h1>
         
-        <DoctorDiagnosisTable pastDiagnosis={pastDiagnosis} />
+        <DoctorDiagnosisTable pastDiagnosis={modifiedPastDiagnosis} />
         <SecondOpinionRequests />
 
         <div className="mb-4">

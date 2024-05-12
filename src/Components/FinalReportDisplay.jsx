@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const FileDisplay = ({ testId }) => {
+const FileDisplay = ({ consultationId }) => {
     const [files, setFiles] = useState([]);
     const [error, setError] = useState(null);
     const [urls, setUrls] = useState([]);
@@ -13,9 +13,9 @@ const FileDisplay = ({ testId }) => {
                 var token = localStorage.getItem('token');
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-                const response = await axios.get('http://localhost:8080/test/getFiles2', {
+                const response = await axios.get('http://localhost:8080/getFinalReports', {
                     params: {
-                        testId: testId,
+                        consultationId: consultationId,
                     },
                 });
                 
@@ -46,7 +46,7 @@ const FileDisplay = ({ testId }) => {
         };
 
         fetchFiles();
-    }, [testId]);
+    }, [consultationId]);
 
     const openFile = (fileUrl) => {
         window.open(fileUrl, '_blank');
@@ -54,11 +54,11 @@ const FileDisplay = ({ testId }) => {
 
     return (
         <div className="p-4">
-            <h2 className="text-lg font-semibold mb-2">Files</h2>
+            <h2 className="text-lg font-semibold mb-2">Final Reports</h2>
             {error && <p className="text-red-500">{error}</p>}
-            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ maxHeight: '150px', overflowY: 'auto' }}>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"  style={{ maxHeight: '120px', overflowY: 'auto' }}>
                 {urls.map((url, index) => (
-                    <div key={index} className="border p-4" >
+                    <div key={index} className="border p-4">
                         <p>File: {index + 1}</p>
                         <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2" onClick={() => openFile(url)}>Open</button>
                     </div>

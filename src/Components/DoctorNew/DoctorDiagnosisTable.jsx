@@ -7,9 +7,10 @@ import {useTable} from 'react-table'
 const DoctorDiagnosticPage = ({pastDiagnosis}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
+      console.log("clicked");
 
-    useEffect(() => {
+     useEffect(() => {
     const fetchData = async () => {
       try {
         
@@ -20,14 +21,32 @@ const DoctorDiagnosticPage = ({pastDiagnosis}) => {
           params: {
           }
         });
+
+       
         console.log(response.data);
-        const modifiedData = response.data.map(item => ({
+        var modifiedData = response.data.map(item => ({
           patientName: item.patientName,
           diagnosis: item.name,
           date: item.date, 
           remarks: item.description, 
           diagnosisId: item.id,
         }));
+
+
+        console.log(pastDiagnosis)
+        if(pastDiagnosis === true){
+           modifiedData = response.data
+           .filter(item => item.finished === true) // Adjust the condition based on your actual boolean property
+           .map(item => ({
+             patientName: item.patientName,
+             diagnosis: item.name,
+             date: item.date,
+             remarks: item.description,
+             diagnosisId: item.id,
+           }));
+           console.log("past" , modifiedData); 
+        }
+        
 
         setData(modifiedData);
         setLoading(false);
@@ -38,7 +57,7 @@ const DoctorDiagnosticPage = ({pastDiagnosis}) => {
     };    
 
         fetchData();
-  }, []);
+   }, [pastDiagnosis]);
 
     const columns = React.useMemo(
     () => [
@@ -72,7 +91,7 @@ const DoctorDiagnosticPage = ({pastDiagnosis}) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Active Diagnosis</h1>
+      <h1 className="text-2xl font-bold mb-4"> {!pastDiagnosis ? "Active Diagnosis" : 'Past Diagnosis'}</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (

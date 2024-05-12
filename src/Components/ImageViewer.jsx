@@ -96,6 +96,8 @@ function ImageViewer({testId}) {
         placement={placement}
         shape={shape}
         className="custom-slider"
+        style={{ width: '65%', marginLeft: '200px', justifyContent: 'center', marginTop: '20px'}}
+
       >
         {/* <img src="https://via.placeholder.com/600x250/8f8e94/FFFFFF?text=1" height="250" />
         <img src="https://via.placeholder.com/600x250/8f8e94/FFFFFF?text=2" height="250" />
