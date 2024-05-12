@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useTable} from 'react-table'
 
-const DoctorDiagnosticPage = () => {
+const DoctorDiagnosticPage = ({pastDiagnosis}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();  

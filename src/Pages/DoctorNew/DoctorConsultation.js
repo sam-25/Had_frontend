@@ -28,7 +28,7 @@ const DoctorConsultation = () => {
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
         <div className='flex-1 h-3/5'>
           {/* <DicomArea testId={testId}/> */}
-          <ImageViewer></ImageViewer>
+          <ImageViewer testId={testId}></ImageViewer>
         </div>
         
         <div className='bg-base-300 flex h-2/5'>

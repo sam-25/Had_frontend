@@ -8,15 +8,16 @@ import './DoctorDashboard.css'
 
 const DoctorDashboard = () => {
   const [showNewDiagnosticForm, setShowNewDiagnosticForm] = useState(false);
-  const [pastDiagnosis, setPastDiagnosis] = useState([]);
+  const [pastDiagnosis, setPastDiagnosis] = useState(false);
 
   const handleAddDiagnosis = () => {
     setShowNewDiagnosticForm(true);
     console.log('Add Diagnosis clicked');
   };
 
-  const handleViewPastDiagnosis = () => {
-    console.log('View Past Diagnosis clicked');
+  const handleTogglePastDiagnosis = () => {
+    setPastDiagnosis(!pastDiagnosis);
+    console.log('Toggle Past Diagnosis clicked');
   };
 
   const handleCloseForm = () => {
@@ -47,9 +48,9 @@ const DoctorDashboard = () => {
           </button>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded"
-            onClick={handleViewPastDiagnosis}
+            onClick={handleTogglePastDiagnosis}
           >
-            View Past Diagnosis
+            {pastDiagnosis ? 'View Active Diagnosis' : 'View Past Diagnosis'}
           </button>
         </div>
 

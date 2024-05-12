@@ -7,7 +7,7 @@ import DicomArea from '../../Components/Radiographer/DicomArea'
 import Notes from '../../Components/Radiographer/Notes'
 import ActionsNavBar from '../../Components/Radiographer/ActionsNavBar'
 import FileComponent from '../../Components/FileComponent';
-
+import DicomUpload from '../../Components/DicomUpload';
 
 const DoctorConsultation = () => {
   let { id } = useParams();
@@ -22,7 +22,8 @@ const DoctorConsultation = () => {
         <ConsultationTabs consultationId = {id} setTestId={setTestId}/>
 
         {/* <ActionsNavBar></ActionsNavBar> */}
-        <FileComponent FileType={"Upload DICOM"}></FileComponent>
+        {/* <FileComponent FileType={"Upload DICOM"}></FileComponent> */}
+        <DicomUpload testId={testId}></DicomUpload>
         {/* <p>ewfw</p> */}
       </div>
 

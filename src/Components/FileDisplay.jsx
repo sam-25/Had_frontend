@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 const FileDisplay = ({ testId }) => {
     const [files, setFiles] = useState([]);
     const [error, setError] = useState(null);
+    const [urls, setUrls] = useState([]);
 
     useEffect(() => {
         const fetchFiles = async () => {
@@ -16,8 +18,21 @@ const FileDisplay = ({ testId }) => {
                         testId: 1,
                     },
                 });
-
-                // Here, you can modify the response data if needed before setting it in the state
+                
+                const urlsArray = response.data.map((dataString) => {
+                    const byteCharacters = atob(dataString);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+    
+                    let image = new Blob([byteArray], { type: 'image/jpeg' });
+    
+                    return URL.createObjectURL(image);
+                });
+    
+                setUrls(urlsArray);
                 setFiles(response.data);
                 setError(null);
 
@@ -34,12 +49,6 @@ const FileDisplay = ({ testId }) => {
     }, [testId]);
 
     const openFile = (fileUrl) => {
-        if (!fileUrl) {
-            console.error('File URL is undefined');
-            return;
-        }
-
-        // Open the image in a new tab
         window.open(fileUrl, '_blank');
     };
 
@@ -48,25 +57,10 @@ const FileDisplay = ({ testId }) => {
             <h2 className="text-lg font-semibold mb-2">Files</h2>
             {error && <p className="text-red-500">{error}</p>}
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {files.map((file, index) => (
-                    <div key={index} className="border p-4">
-                        {file.type && file.type.startsWith('image/') ? (
-                            <img
-                                src={file.url}
-                                alt={`Image ${index}`}
-                                className="max-w-full h-auto mb-2"
-                                onClick={() => openFile(file.url)}
-                            />
-                        ) : (
-                            <p>File {index + 1}</p>
-                        )}
-                        {file.description && <p>{file.description}</p>}
-                        <button
-                            onClick={() => openFile(file.url)}
-                            className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        >
-                            Open File
-                        </button>
+                {urls.map((url, index) => (
+                    <div key={index} className="border p-4" >
+                        <p>File: {index + 1}</p>
+                        <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2" onClick={() => openFile(url)}>Open</button>
                     </div>
                 ))}
             </div>
