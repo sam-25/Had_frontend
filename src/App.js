@@ -7,7 +7,10 @@ import DoctorConsultation from './Pages/DoctorNew/DoctorConsultation';
 import PatientDashboard from './Pages/Patient/PatientDashboard'
 import RadiographerDashboard from './Pages/Radiographer/RadiographerDashboard'
 import RadiologistDashboard from './Pages/Radiologist/RadiologistDashboard'
-
+import Dashboard from './Pages/Admin/Dashboard';
+import AddDoctorForm from './Components/Forms/AddDoctorForm';
+import AddRadiographerform from './Components/Forms/AddRadiographerform';
+import AddRadiologistform from './Components/Forms/AddRadiologistform';
 import PatientConsultation from './Pages/Patient/PatientConsultation';
 import RadiologistConsultation from './Pages/Radiologist/RadiologistConsultation';
 import Notes from './Components/DoctorNew/Notes';
@@ -26,14 +29,16 @@ function App() {
               <Route path="/Radiologist" element = {auth() ? <RadiologistDashboard /> : <LoginPage></LoginPage>} />
               <Route path="/Patient" element = {auth() ? <PatientDashboard/>: <LoginPage></LoginPage>}/>
               <Route path="/Radiographer" element = {auth() ? <RadiographerDashboard /> : <LoginPage></LoginPage>} />
-              <Route path="/Admin" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
+              <Route path="/AdminDashboard" element = {<Dashboard />} />
               <Route path="/Doctor" element = {auth() ? <DoctorDashboardPage /> : <LoginPage></LoginPage>} />
               
               <Route path="/DoctorConsultation/:id" element={<DoctorConsultation/>} />
               <Route path="/PatientConsultation/:id" element={<PatientConsultation/>} />
               <Route path="/RadiographerConsultation/:id" element={<RadiographerConsultation/>} />
               <Route path="/RadiologistConsultation/:id" element={<RadiologistConsultation/>} />
-
+              <Route path="/Admin/AddDoctor" element={<AddDoctorForm/>} />
+              <Route path="/Admin/AddRadiologist" element={<AddRadiologistform/>} />
+              <Route path="/Admin/AddRadiographer"element={<AddRadiographerform/>} />
               {/* <Route path="/" element= {< RadiographerConsultation/>}/> */}
 
           </Routes>
