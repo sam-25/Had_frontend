@@ -9,6 +9,7 @@ import ActionsNavBar from '../../Components/DoctorNew/ActionsNavBar';
 import FileComponent from '../../Components/FileComponent';
 import UploadDocs from '../../Components/UploadDocs';
 import FileDisplay from '../../Components/FileDisplay';
+import ImageViewer from '../../Components/ImageViewer';
 
 const DoctorConsultation = () => {
   let { id } = useParams();
@@ -26,7 +27,8 @@ const DoctorConsultation = () => {
 
       <div className='bg-secondary-content col-span-3 h-screen flex flex-col'>
         <div className='flex-1 h-3/5'>
-          <DicomArea testId={testId}/>
+          {/* <DicomArea testId={testId}/> */}
+          <ImageViewer></ImageViewer>
         </div>
         
         <div className='bg-base-300 flex h-2/5'>
